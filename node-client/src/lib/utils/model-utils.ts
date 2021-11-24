@@ -1,4 +1,15 @@
 import { ClassConstructor, classToPlain, plainToClass } from 'class-transformer';
+import { validateSync } from 'class-validator';
+
+import { ValidationException } from '../common';
+
+/**
+ * The plain object version of a model class
+ */
+export type PlainObject<TModel> = {
+  [P in keyof TModel]?: any
+}
+
 /**
  * The utility class for handling model parsing and serialization
  */
@@ -14,13 +25,19 @@ export class ModelUtils {
    * @param object The plain object
    * @return the instance of this model
    */
-  static parse<T>(constructor: ClassConstructor<T>, object: Record<string, any>): T
-  static parse<T>(constructor: ClassConstructor<T>, jsonOrObject: string | Record<string, any>): T {
+  static parse<T>(constructor: ClassConstructor<T>, object: PlainObject<T>): T
+  static parse<T>(constructor: ClassConstructor<T>, jsonOrObject: string | PlainObject<T>): T {
     if (typeof jsonOrObject === "string") {
       jsonOrObject = JSON.parse(jsonOrObject);
     }
     // retrieve constructor from metadata
-    return plainToClass(constructor, jsonOrObject);
+    const instance = plainToClass(constructor, jsonOrObject);
+    // run validation
+    const errors = validateSync(instance as any);
+    if (errors.length > 0) {
+      throw new ValidationException(instance, errors);
+    }
+    return instance;
   }
 
   /**
@@ -28,8 +45,8 @@ export class ModelUtils {
    * @param model The instance of the model to serialize
    * @returns the serialized object
    */
-  static serialize<T>(model: T): Record<string, any> {
-    return classToPlain(model)
+  static serialize<T, R = PlainObject<T>>(model: T): R {
+    return classToPlain(model) as any;
   }
 
   /**

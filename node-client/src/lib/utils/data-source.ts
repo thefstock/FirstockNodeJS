@@ -2,7 +2,7 @@ import { ClassConstructor } from 'class-transformer';
 import urlJoin from 'url-join';
 
 import { Context } from './context';
-import { ModelUtils } from './model-utils';
+import { ModelUtils, PlainObject } from './model-utils';
 
 export interface IDataSourceSendOptions<TRequestModel = any, TResponseModel = any> {
   /**
@@ -10,13 +10,17 @@ export interface IDataSourceSendOptions<TRequestModel = any, TResponseModel = an
    */
   endpoint: string;
   /**
-   * The model instance for the request
+   * The payload for the request
    */
-  model: TRequestModel;
+  data: PlainObject<TRequestModel>;
   /**
    * Pass authentication key for the request. Optional
    */
   key?: string;
+  /**
+   * The constructor for the request class
+   */
+  requestClass: ClassConstructor<TRequestModel>
   /**
    * The constructor for the response to parse
    */
@@ -41,7 +45,6 @@ export interface IDataSourceOptions {
  * The data source handles axios requests
  */
 export abstract class DataSource {
-  private baseUrl: string;
   private headers: Record<string, string>;
 
   /**
@@ -50,10 +53,8 @@ export abstract class DataSource {
    * @param headers The global headers to use
    */
   constructor(
-    baseUrl: string,
     headers: Record<string, string> = {}
   ) {
-    this.baseUrl = baseUrl;
     this.headers = {
       "content-type": "text/plain",
       ...headers
@@ -69,15 +70,17 @@ export abstract class DataSource {
    * Send request to the api using model
    * @param option The send options
    */
-  async send<T>({ endpoint, model, key, responseClass }: IDataSourceSendOptions<T>) {
+  async send<T>({ endpoint, data, key, responseClass, requestClass }: IDataSourceSendOptions<T>) {
     // get key from context if not provided
     key = key ?? this.context.getState('key');
+    // convert data to model instance
+    const model = ModelUtils.parse(requestClass, data);
     // convert model to json string
     const payload = ModelUtils.stringify(model);
     // send request
-    const data = await this.request(endpoint, payload, key);
-    // parse the data
-    return ModelUtils.parse(responseClass, data);
+    const response = await this.request(endpoint, payload, key);
+    // parse the response
+    return ModelUtils.parse(responseClass, response);
   }
 
   /**
@@ -86,7 +89,7 @@ export abstract class DataSource {
    * @param payload The payload for the request
    * @param [key] Used for authentication. Optional
    */
-  async request(url: string, payload: string, key?: string): Promise<Record<string, any>> {
+  protected async request(url: string, payload: string, key?: string): Promise<Record<string, any>> {
     // generate url
     const params: string[] = [`jData=${payload}`];
     if (key) params.push(`jKey=${key}`);
@@ -107,6 +110,6 @@ export abstract class DataSource {
    * @param url The relative url
    */
   private expandUrl(url: string): string {
-    return urlJoin(this.baseUrl, url);
+    return urlJoin(this.context.apiUrl, url);
   }
 }

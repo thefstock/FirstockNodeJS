@@ -14,8 +14,8 @@ export interface ITimestampFieldOptions {
  * @param options The options to the timestamp field
  * @returns property decorator
  */
-export function TimestampField(options: ITimestampFieldOptions) {
-  const { unix = true } = options;
+export function TimestampField(options: ITimestampFieldOptions = {}) {
+  const { unix = false } = options;
   return Field({
     encoder({ value }) {
       return unix ? moment(value).unix() : moment(value).valueOf();

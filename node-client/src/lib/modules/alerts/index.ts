@@ -1,0 +1,4 @@
+/**
+ * @module
+ * The alerts module
+ */
