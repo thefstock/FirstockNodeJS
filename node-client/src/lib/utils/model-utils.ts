@@ -14,7 +14,7 @@ export class ModelUtils {
    * @param object The plain object
    * @return the instance of this model
    */
-  static parse<T>(constructor: ClassConstructor<T>, object: Record<keyof T, any>): T
+  static parse<T>(constructor: ClassConstructor<T>, object: Record<string, any>): T
   static parse<T>(constructor: ClassConstructor<T>, jsonOrObject: string | Record<string, any>): T {
     if (typeof jsonOrObject === "string") {
       jsonOrObject = JSON.parse(jsonOrObject);
