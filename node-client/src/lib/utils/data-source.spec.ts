@@ -6,7 +6,6 @@ import { Container, Inject, Service } from 'typedi';
 
 import { Context } from './context';
 import { DataSource } from './data-source';
-import { ModelUtils } from './model-utils';
 
 // test classes
 class CreateTodoRequest {
@@ -31,7 +30,7 @@ class CustomDataSource extends DataSource {
   get context() { return this._context };
 
   constructor() {
-    super('http://example.com/api');
+    super();
   }
 }
 
@@ -40,7 +39,8 @@ let spy: sinon.SinonSpy;
 const sandbox = sinon.createSandbox();
 
 const setup = (t: ExecutionContext) => {
-  context = Container.get(Context);
+  context = new Context({ apiUrl: 'http://example.com/api', wsUrl: '' });
+  Container.set(Context, context);
   spy = sandbox.spy(context.agent, "post");
   t.teardown(() => {
     Container.reset();
@@ -51,11 +51,11 @@ const setup = (t: ExecutionContext) => {
 test('should send proper request details', t => {
   setup(t);
   const dataSource = Container.get(CustomDataSource);
-  const model = ModelUtils.parse(CreateTodoRequest, { title: "Sample title", content: "Sample Content" })
   dataSource.send({
     endpoint: '/todo',
-    model,
-    responseClass: CreateTodoResponse
+    data: { title: "Sample title", content: "Sample Content" },
+    responseClass: CreateTodoResponse,
+    requestClass: CreateTodoRequest
   });
 
   t.true(spy.calledOnce);
@@ -68,11 +68,11 @@ test('should get key from context', t => {
   setup(t);
   context.setState('key', 'secret-token');
   const dataSource = Container.get(CustomDataSource);
-  const model = ModelUtils.parse(CreateTodoRequest, { title: "Sample title", content: "Sample Content" })
   dataSource.send({
     endpoint: '/todo',
-    model,
-    responseClass: CreateTodoResponse
+    data: { title: "Sample title", content: "Sample Content" },
+    responseClass: CreateTodoResponse,
+    requestClass: CreateTodoRequest
   });
 
   t.true(spy.calledOnce);

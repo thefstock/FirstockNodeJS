@@ -25,7 +25,7 @@ class User {
   date = new Date();
 }
 
-test('should run all the decoders properly', (t) => {
+test('should run all the decoders properly', async (t) => {
   const user = ModelUtils.parse(User, {
     email: "johndoe@example.com",
     name: 'john doe',
@@ -41,7 +41,7 @@ test('should run all the decoders properly', (t) => {
   t.true(moment(user.date).isSame(moment('2021-10-18T15:09:03.827Z'), "day"));
 });
 
-test('should run all the encoders properly', (t) => {
+test('should run all the encoders properly', async (t) => {
   const user = ModelUtils.parse(User, {
     email: "johndoe@example.com",
     name: 'john doe',
@@ -55,7 +55,7 @@ test('should run all the encoders properly', (t) => {
   t.is(userObj.password, "******");
 });
 
-test('should load default values if not provided', t => {
+test('should load default values if not provided', async (t) => {
   const user = ModelUtils.parse(User, {
     email: "johndoe@example.com",
     name: 'john doe',

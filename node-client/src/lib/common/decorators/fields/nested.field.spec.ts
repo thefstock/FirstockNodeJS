@@ -36,8 +36,11 @@ class NestedSecond {
 /*                                    TESTS                                   */
 /* -------------------------------------------------------------------------- */
 
-test('should parse nested models if @Nested decorator is specified', t => {
-  const nested1 = ModelUtils.parse(NestedFirst, { name: 'sample', nested: { date: '31-05-1995' } });
+test('should parse nested models if @Nested decorator is specified', async (t) => {
+  const nested1 = ModelUtils.parse(
+    NestedFirst,
+    { name: 'sample', nested: { date: '31-05-1995' } }
+  );
 
   t.is(nested1.name, 'sample');
   t.true(nested1.nested instanceof Wrapper);
@@ -60,7 +63,7 @@ test('should parse nested models if @Nested decorator is specified', t => {
   t.true(nested2.nested.nested.date instanceof Date);
 });
 
-test('should serialize nested models properly', t => {
+test('should serialize nested models properly', async (t) => {
   const nested1 = ModelUtils.parse(NestedFirst, { name: 'sample', nested: { date: '31-05-1995' } });
   const obj1 = ModelUtils.serialize(nested1);
 

@@ -1,14 +1,22 @@
 import { Type } from 'class-transformer';
-import { IsBoolean, IsNumber, IsString } from 'class-validator';
+import { IsBoolean, IsIn, IsNumber, IsString } from 'class-validator';
 
 import { Compose, Field } from '../common';
+
+export interface IPrimitiveOptions {
+  /**
+   * whether the value is an array or not
+   */
+  isArray?: boolean;
+}
 
 /**
  * A string field decorator
  */
-export function StringField(): PropertyDecorator {
+export function StringField(options: IPrimitiveOptions = {}): PropertyDecorator {
+  const { isArray = false } = options;
   return Compose([
-    IsString(),
+    IsString({ each: isArray }),
     Type(() => String)
   ]);
 }
@@ -16,9 +24,10 @@ export function StringField(): PropertyDecorator {
 /**
  * A number field decorator
  */
-export function NumberField(): PropertyDecorator {
+export function NumberField(options: IPrimitiveOptions = {}): PropertyDecorator {
+  const { isArray = false } = options;
   return Compose([
-    IsNumber(),
+    IsNumber({}, { each: isArray }),
     Type(() => Number)
   ])
 }
@@ -26,14 +35,26 @@ export function NumberField(): PropertyDecorator {
 /**
  * The boolean field decorator
  */
-export function BoolField(): PropertyDecorator {
+export function BoolField(options: IPrimitiveOptions = {}): PropertyDecorator {
+  const { isArray = false } = options;
   return Compose([
-    IsBoolean(),
+    IsBoolean({ each: isArray }),
     Field({
       decoder({ value }) {
-        if (typeof value === "string" && value.toLowerCase().trim() === "false") return false;
-        return !!value;
+        const decode = (val: any) => {
+          if (typeof val === "string" && val.toLowerCase().trim() === "false") return false;
+          return !!val;
+        }
+        return isArray ? value.map(decode) : decode(value);
       }
     })
   ])
+}
+
+/**
+ * A field whose values should be on from an enum
+ * @param enumType The type of enum
+ */
+export function EnumField(enumType: any): PropertyDecorator {
+  return IsIn(Object.values(enumType));
 }

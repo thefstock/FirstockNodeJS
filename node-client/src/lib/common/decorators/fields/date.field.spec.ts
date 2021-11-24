@@ -6,7 +6,7 @@ import { ModelUtils } from '../../../utils/model-utils';
 
 import { DateField } from './date.field';
 
-test('should parse and serialize date properly', (t) => {
+test('should parse and serialize date properly', async (t) => {
   // sample class
   class TestDateField {
     @DateField({ format: 'DD/MM/YYYY' })
@@ -22,7 +22,7 @@ test('should parse and serialize date properly', (t) => {
   t.is(obj.date, "28/02/1997");
 });
 
-test('should parse date with default format if nothing is specified', (t) => {
+test('should parse date with default format if nothing is specified', async (t) => {
   class TestDateField {
     @DateField()
     date: Date;
@@ -33,7 +33,7 @@ test('should parse date with default format if nothing is specified', (t) => {
   t.true(moment(instance.date).isSame(moment('28/02/1997', 'DD/MM/YYYY'), "day"))
 });
 
-test('should parse date with format if its is specified as the argument', (t) => {
+test('should parse date with format if its is specified as the argument', async (t) => {
   class TestDateField {
     @DateField('MM/DD/YYYY')
     date: Date;

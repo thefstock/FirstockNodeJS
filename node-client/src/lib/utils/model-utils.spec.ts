@@ -44,4 +44,4 @@ test('should parse plain objects', t => {
   t.is(user.age, 56);
   t.true(user.createdAt instanceof Date);
   t.is(user.createdAt.toISOString(), "2021-11-17T14:37:27.260Z");
-})
+});
