@@ -31,7 +31,7 @@ function createService(module: string, blueprint?: IModuleBlueprint): string {
   (models.length > 0) && importStatements.push(createNamedImport(sortBy(models), './models'));
   // The service class
   const serviceClass = ts.addSyntheticLeadingComment(
-    createServiceClass(module, methods),
+    createServiceClass(module, methods, blueprint),
     ts.SyntaxKind.MultiLineCommentTrivia,
     createDocComments([
       fmt('The data source service for {module!lowerCase} module.', { module })
@@ -68,7 +68,7 @@ function compileBlueprint(blueprint: IModuleBlueprint) {
  * Create the service class
  * @param module The module name
  */
-function createServiceClass(module: string, methods: string[] = []) {
+function createServiceClass(module: string, methods: string[] = [], blueprint?: IModuleBlueprint) {
   const className = fmt('{module!pascalCase}Service', { module });
   // the Service decorator
   const serviceDecorator = ts.factory.createDecorator(
@@ -128,6 +128,7 @@ function createServiceClass(module: string, methods: string[] = []) {
           createMethod(method),
           ts.SyntaxKind.MultiLineCommentTrivia,
           createDocComments([
+            blueprint?.methods[method]?.description ??
             fmt('The {method!lowerCase} method for the {module!lowerCase} module', { method, module }),
             fmt('@param data The payload for {method!lowerCase} request', { method })
           ]),

@@ -9,7 +9,7 @@ import {
   LogoutRequestModel,
   LogoutResponseModel
 } from './modules/users';
-import { UserService } from './modules/users/users.service';
+import { UsersService } from './modules/users/users.service';
 import { PlainObject } from './utils';
 import { Context, IContextParams } from './utils/context';
 
@@ -31,7 +31,7 @@ export class Client {
    * @param users The users service
    */
   constructor(
-    public readonly users: UserService
+    public readonly users: UsersService
   ) { }
 
   /**

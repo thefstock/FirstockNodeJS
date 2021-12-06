@@ -14,7 +14,7 @@ import endpoints from './users.endpoints';
  * The data source service for all login/logout and user requests.
  */
 @Service()
-export class UserService extends DataSource {
+export class UsersService extends DataSource {
   /**
    * The client context
    */
