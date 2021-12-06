@@ -110,6 +110,25 @@ export function createPropertyDeclaration(
  * convert comment list to multiline doc comment.
  */
 export function createDocComments(comments: string[]) {
-  const lines = comments.map(comment => ` * ${comment}\n`).join('\n')
+  const lines = comments.map(comment => ` * ${comment}\n`).join('')
   return `*\n${lines}`;
+}
+
+/**
+ * create the index.ts file export statements for all other files in the module
+ */
+export function createIndexExports(filenames: string[]) {
+  const createExport = (filename: string) => (
+    factory.createExportDeclaration(
+      undefined,
+      undefined,
+      false,
+      undefined,
+      factory.createStringLiteral(`./${filename}`)
+    )
+  );
+  return generateProgram(
+    "index.ts",
+    factory.createNodeArray(filenames.map(createExport))
+  );
 }
