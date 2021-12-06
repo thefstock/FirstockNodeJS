@@ -30,14 +30,16 @@ function createModels(method: string, spec: IMethodSpec) {
     ts.SyntaxKind.MultiLineCommentTrivia,
     createDocComments([
       fmt('The request model for {method!lowerCase}', { method })
-    ])
+    ]),
+    true
   );
   const responseModel = ts.addSyntheticLeadingComment(
     createModel(responseModelName, spec.response ?? {}, usedDecorators),
     ts.SyntaxKind.MultiLineCommentTrivia,
     createDocComments([
       fmt('The response model for {method!lowerCase}', { method })
-    ])
+    ]),
+    true
   );
 
   // the import statement

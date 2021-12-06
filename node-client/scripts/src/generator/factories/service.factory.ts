@@ -15,6 +15,7 @@ const fmt = createFormatter();
 /**
  * Generate service code
  * @param module The module name
+ * @param blueprint The module blueprint
  */
 function createService(module: string, blueprint?: IModuleBlueprint): string {
   // get models and methods from blueprint
@@ -129,7 +130,8 @@ function createServiceClass(module: string, methods: string[] = []) {
           createDocComments([
             fmt('The {method!lowerCase} method for the {module!lowerCase} module', { method, module }),
             fmt('@param data The payload for {method!lowerCase} request', { method })
-          ])
+          ]),
+          true
         )
       ))
     ]
