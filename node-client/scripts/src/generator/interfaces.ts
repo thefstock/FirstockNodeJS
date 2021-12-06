@@ -8,6 +8,7 @@ export interface IMethodSpec {
   description?: string;
   payload?: Record<string, IModelSpec>;
   response?: Record<string, IModelSpec>;
+  schemas?: Record<string, Record<string, IModelSpec>>;
 }
 
 export interface IModelSpec {

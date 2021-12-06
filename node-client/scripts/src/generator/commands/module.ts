@@ -26,7 +26,7 @@ export class IModuleCommandOptions extends Options {
     flag: 'f',
     description: 'Force replace files if already exists',
   })
-  force?: boolean;
+  force: boolean = false;
 
   readBlueprint(): IModuleBlueprint {
     const filepath = path.join(rootPath, this.blueprint);
@@ -61,6 +61,7 @@ export default class extends Command {
 
       if (options.force && fs.existsSync(modulePath)) {
         // remove folder
+        console.log(chalk`{red [REMOVING]} ${modulePath} and all its contents`);
         fs.rmSync(modulePath, { recursive: true, force: true });
       }
 
