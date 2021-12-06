@@ -42,6 +42,21 @@ function createModels(method: string, spec: IMethodSpec) {
     true
   );
 
+  // extra schemas
+  const schemaModels = Object
+    .entries(spec.schemas ?? {})
+    .flatMap(([name, spec]) => [
+      ts.addSyntheticLeadingComment(
+        createModel(name, spec),
+        ts.SyntaxKind.MultiLineCommentTrivia,
+        createDocComments([
+          fmt('{name!lowerCase}', { name })
+        ]),
+        true
+      ),
+      ts.factory.createIdentifier('\n')
+    ]);
+
   // the import statement
   const importStatements = [
     createNamedImport(['IsOptional'], 'class-validator'),
@@ -55,9 +70,10 @@ function createModels(method: string, spec: IMethodSpec) {
     ),
     ...importStatements,
     ts.factory.createIdentifier("\n"),
+    ...schemaModels,
     requestModel,
     ts.factory.createIdentifier("\n"),
-    responseModel
+    responseModel,
   ]);
 
   const filename = fmt('{method!kebabCase}.model.ts', { method });
