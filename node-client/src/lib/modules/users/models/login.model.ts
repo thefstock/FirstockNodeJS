@@ -1,8 +1,8 @@
 /**
  * @module
- * Request and Response models for login
- */
-import { IsDefined, IsEmail, IsIP, IsOptional, ValidateIf } from 'class-validator';
+ * The request and response models for
+ *  */
+import { IsEmail, IsIP, IsOptional } from 'class-validator';
 
 import {
   DateField,
@@ -11,119 +11,116 @@ import {
   RequestSourceType,
   ResponseStatus,
   StringField,
-  TimestampField
+  TimestampField,
 } from '../../../common';
 
 /**
- * The data model for login request
+ * The request model for login
  */
 export class LoginRequestModel {
   /**
    * Application Version
    */
-  @StringField()
-  @IsDefined()
+  @StringField({ isArray: false })
   apkversion: string;
-
   /**
    * User Id of the login user
    */
-  @StringField()
-  @IsDefined()
+  @StringField({ isArray: false })
   uid: string;
-
   /**
    * password for login. It will be automatically hashed during the request
    */
+  @StringField({ isArray: false })
+  @IsOptional()
   @Hashed()
-  @StringField()
-  @ValidateIf(o => o.dip === undefined)
   pwd?: string;
   /**
    * The device pin
    */
+  @StringField({ isArray: false })
+  @IsOptional()
   @Hashed()
-  @StringField()
-  @ValidateIf(o => o.pwd === undefined)
   dpin?: string;
   /**
    * DOB or PAN
    */
-  @StringField()
-  @IsDefined()
+  @StringField({ isArray: false })
   factor2: string;
   /**
    * Vendor code
    */
-  @StringField()
-  vc: string
+  @StringField({ isArray: false })
+  vc: string;
   /**
    * Sha256 of uid|vendor_key
    */
-  @StringField()
+  @StringField({ isArray: false })
   appkey: string;
   /**
    * IMEI for mobile (If desktop it takes the MAC address)
    */
-  @StringField()
+  @StringField({ isArray: false })
   imei: string;
   /**
-   * Value must be in below format:
-   * iOS - iosInfo.utsname.machine - iosInfo.systemVersion
-   * Android - androidInfo.model - androidInfo.version
-   * examples:
-   *  iOS - iPhone 8.0 - 9.0
-   *  Android - Moto G - 9 PKQ1.181203.01
-   */
-  @StringField()
+     *
+      Value must be in below format:
+        iOS - iosInfo.utsname.machine - iosInfo.systemVersion
+        Android - androidInfo.model - androidInfo.version
+      examples:
+        iOS - iPhone 8.0 - 9.0
+        Android - Moto G - 9 PKQ1.181203.01
+
+    */
+  @StringField({ isArray: false })
   @IsOptional()
-  addldivinf: string;
+  addldivinf?: string;
   /**
    * The IP address of the system
    */
   @StringField()
-  @IsOptional()
   @IsIP()
-  ipaddr: string;
+  @IsOptional()
+  ipaddr?: string;
   /**
    * Access Type
    */
   @EnumField(RequestSourceType)
   @IsOptional()
-  source: RequestSourceType = RequestSourceType.API;
+  source?: RequestSourceType;
 }
 
 /**
- * The data model for login response
+ * The response model for login
  */
 export class LoginResponseModel {
   /**
-   * success or failure status
+   * Login success or failure status
    */
   @EnumField(ResponseStatus)
-  stat: ResponseStatus = ResponseStatus.OK
+  stat: ResponseStatus;
   /**
    * Present only on login success. This key is to be passed in subsequent requests
    */
-  @StringField()
-  @ValidateIf(o => o.stat === ResponseStatus.OK)
+  @StringField({ isArray: false })
+  @IsOptional()
   susertoken?: string;
   /**
    * Present only on login success.
    */
-  @TimestampField({ unix: true })
-  @ValidateIf(o => o.stat === ResponseStatus.OK)
+  @DateField('DD-MM-YYYY hh:mm:ss')
+  @IsOptional()
   lastaccesstime?: Date;
   /**
    * It will be present only on successful login.
    */
-  @DateField()
-  @ValidateIf(o => o.stat === ResponseStatus.OK)
+  @TimestampField()
+  @IsOptional()
   request_time?: Date;
   /**
    * If Y Mandatory password reset to be enforced. Otherwise the field will be absent.
    */
-  @StringField()
+  @StringField({ isArray: false })
   @IsOptional()
   spasswordreset?: string;
   /**
@@ -135,32 +132,32 @@ export class LoginResponseModel {
   /**
    * Username
    */
-  @StringField()
+  @StringField({ isArray: false })
   @IsOptional()
   uname?: string;
   /**
-   * Account id
+   * Account Id
    */
-  @StringField()
+  @StringField({ isArray: false })
   @IsOptional()
   actid?: string;
   /**
    * Email Id
    */
-  @StringField()
-  @IsEmail()
+  @StringField({ isArray: false })
   @IsOptional()
+  @IsEmail()
   email?: string;
   /**
    * Broker Id
    */
-  @StringField()
+  @StringField({ isArray: false })
   @IsOptional()
   brkname?: string;
   /**
    * Error message if the login failed
    */
-  @StringField()
+  @StringField({ isArray: false })
   @IsOptional()
   emsg?: string;
 }

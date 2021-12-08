@@ -1,7 +1,8 @@
 /**
  * @module
- * The request and response models for
+ * common models used across the project
  *  */
+
 import { IsOptional } from 'class-validator';
 
 import {
@@ -12,9 +13,9 @@ import {
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The get predefined watch lists request model model
  */
-export class LogoutRequestModel {
+export class GetPredefinedWatchlistsRequestModel {
   /**
    * The user id of the login user
    */
@@ -23,20 +24,26 @@ export class LogoutRequestModel {
 }
 
 /**
- * The response model for logout
+ * The get predefined watch lists response model model
  */
-export class LogoutResponseModel {
+export class GetPredefinedWatchlistsResponseModel {
   /**
-   * The logout success or failure status
+   * The get predefined watchlists success or failure status
    */
   @EnumField(ResponseStatus)
-  stat: ResponseStatus;
+  @IsOptional()
+  stat?: ResponseStatus;
   /**
    * It will be present only on successful response.
    */
   @TimestampField()
   @IsOptional()
   request_time?: Date;
+  /**
+   * Watch List names as a json array of strings.
+   */
+  @StringField({ isArray: true })
+  values: string[];
   /**
    * Error message if the request failed
    */

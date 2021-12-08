@@ -6,56 +6,55 @@ import { IsOptional } from 'class-validator';
 
 import {
   EnumField,
-  Hashed,
   ResponseStatus,
   StringField,
   TimestampField,
 } from '../../../common';
 
 /**
- * The request model for change password
+ * The request model for exit sno order
  */
-export class ChangePasswordRequestModel {
+export class ExitSnoOrderRequestModel {
   /**
-   * User Id
+   * Logged in User Id
    */
   @StringField({ isArray: false })
   uid: string;
   /**
-   * The old password
+   * Noren order number, which needs to be cancelled
    */
   @StringField({ isArray: false })
-  @Hashed()
-  oldpwd: string;
+  norenordno: string;
   /**
-   * The new password
+   * Allowed for only H and B products (Cover order and bracket order)
    */
   @StringField({ isArray: false })
-  pwd: string;
+  prd: string;
 }
 
 /**
- * The response model for change password
+ * The response model for exit sno order
  */
-export class ChangePasswordResponseModel {
+export class ExitSnoOrderResponseModel {
   /**
-   * Password change success or failure status
+   * The exit sno success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
   /**
-   * Response recieved time
+   * It will be present only on successful response.
    */
   @TimestampField()
-  request_time: Date;
+  @IsOptional()
+  request_time?: Date;
   /**
-   * This will be present only in case of success. Number of days to expiry will be present in same.
+   * Display message, (will be present only in case of success).
    */
   @StringField({ isArray: false })
   @IsOptional()
   dmsg?: string;
   /**
-   * Error message if password change failed
+   * Error message if the request failed
    */
   @StringField({ isArray: false })
   @IsOptional()

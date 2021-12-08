@@ -6,6 +6,8 @@ import { IsOptional } from 'class-validator';
 
 import {
   EnumField,
+  ExchTsym,
+  Nested,
   NumberField,
   ResponseStatus,
   StringField,
@@ -13,38 +15,32 @@ import {
 } from '../../../common';
 
 /**
- * The request model for get content list
+ * The request model for holdings
  */
-export class GetContentListRequestModel {
+export class HoldingsRequestModel {
   /**
    * The user id of the login user
    */
   @StringField({ isArray: false })
   uid: string;
   /**
-   * Exchange Name
+   * Account id of the logged in user.
    */
   @StringField({ isArray: false })
-  exch: string;
+  actid: string;
   /**
-   * Condition list
+   * Product name
    */
   @StringField({ isArray: false })
-  condition_name: string;
-  /**
-   * Basket Name
-   */
-  @StringField({ isArray: false })
-  @IsOptional()
-  basket?: string;
+  prd: string;
 }
 
 /**
- * The response model for get content list
+ * The response model for holdings
  */
-export class GetContentListResponseModel {
+export class HoldingsResponseModel {
   /**
-   * The get content list success or failure status
+   * The holdings success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
@@ -55,59 +51,77 @@ export class GetContentListResponseModel {
   @IsOptional()
   request_time?: Date;
   /**
-   * Trading symbol
+   * Array of objects exch_tsym objects as defined below.
    */
-  @StringField({ isArray: false })
+  @Nested(ExchTsym, { isArray: true })
   @IsOptional()
-  tsym?: string;
+  exch_tsym?: ExchTsym[];
   /**
-   * LTP
+   * Holding quantity
    */
   @NumberField({ isArray: false })
   @IsOptional()
-  lp?: number;
+  holdqty?: number;
   /**
-   * Close price
+   * DP Holding quantity
    */
   @NumberField({ isArray: false })
   @IsOptional()
-  c?: number;
+  dpqty?: number;
   /**
-   * High price
+   * Non Poa display quantity
    */
   @NumberField({ isArray: false })
   @IsOptional()
-  h?: number;
+  npoadqty?: number;
   /**
-   * Low price
+   * Collateral quantity
    */
   @NumberField({ isArray: false })
   @IsOptional()
-  l?: number;
+  colqty?: number;
   /**
-   * Average trade price
+   * Beneficiary quantity
    */
   @NumberField({ isArray: false })
   @IsOptional()
-  ap?: number;
+  benqty?: number;
   /**
-   * Volume
+   * Unpledged quantity
    */
   @NumberField({ isArray: false })
   @IsOptional()
-  v?: number;
+  unplgdqty?: number;
   /**
-   * Last trade time
-   */
-  @StringField({ isArray: false })
-  @IsOptional()
-  ltt?: string;
-  /**
-   * Percentage change
+   * Broker Collateral
    */
   @NumberField({ isArray: false })
   @IsOptional()
-  pc?: number;
+  brkcolqty?: number;
+  /**
+   * BTST quantity
+   */
+  @NumberField({ isArray: false })
+  @IsOptional()
+  btstqty?: number;
+  /**
+   * BTST Collateral quantity
+   */
+  @NumberField({ isArray: false })
+  @IsOptional()
+  btstcolqty?: number;
+  /**
+   * Holding used today
+   */
+  @NumberField({ isArray: false })
+  @IsOptional()
+  usedqty?: number;
+  /**
+   * Average price uploaded along with holdings
+   */
+  @NumberField({ isArray: false })
+  @IsOptional()
+  upldprc?: number;
   /**
    * Error message if the request failed
    */

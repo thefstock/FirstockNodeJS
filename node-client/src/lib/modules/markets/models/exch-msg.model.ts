@@ -12,31 +12,49 @@ import {
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for exch msg
  */
-export class LogoutRequestModel {
+export class ExchMsgRequestModel {
   /**
    * The user id of the login user
    */
   @StringField({ isArray: false })
   uid: string;
+  /**
+   * Exchange
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  exch?: string;
 }
 
 /**
- * The response model for logout
+ * The response model for exch msg
  */
-export class LogoutResponseModel {
+export class ExchMsgResponseModel {
   /**
-   * The logout success or failure status
+   * The exch message success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
   /**
-   * It will be present only on successful response.
+   * Response received time
    */
   @TimestampField()
   @IsOptional()
   request_time?: Date;
+  /**
+   * It will be present only on a successful response
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  exchmsg?: string;
+  /**
+   * Exchange Time
+   */
+  @TimestampField()
+  @IsOptional()
+  exchtm?: Date;
   /**
    * Error message if the request failed
    */

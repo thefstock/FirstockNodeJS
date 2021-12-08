@@ -12,20 +12,25 @@ import {
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for save fcm token
  */
-export class LogoutRequestModel {
+export class SaveFcmTokenRequestModel {
   /**
    * The user id of the login user
    */
   @StringField({ isArray: false })
   uid: string;
+  /**
+   * FCM token collected from device
+   */
+  @StringField({ isArray: false })
+  fcmtkn: string;
 }
 
 /**
- * The response model for logout
+ * The response model for save fcm token
  */
-export class LogoutResponseModel {
+export class SaveFcmTokenResponseModel {
   /**
    * The logout success or failure status
    */

@@ -4,39 +4,33 @@
  *  */
 import { IsOptional } from 'class-validator';
 
-import {
-  EnumField,
-  NumberField,
-  ResponseStatus,
-  StringField,
-  TimestampField,
-} from '../../../common';
+import { StringField, TimestampField } from '../../../common';
 
 /**
- * The request model for get max payout amount
+ * The request model for cancel alert
  */
-export class GetMaxPayoutAmountRequestModel {
+export class CancelAlertRequestModel {
   /**
    * The user id of the login user
    */
   @StringField({ isArray: false })
   uid: string;
   /**
-   * The account id
+   * Alert Id
    */
   @StringField({ isArray: false })
-  actid: string;
+  al_id: string;
 }
 
 /**
- * The response model for get max payout amount
+ * The response model for cancel alert
  */
-export class GetMaxPayoutAmountResponseModel {
+export class CancelAlertResponseModel {
   /**
-   * The get max payout amount success or failure status
+   * The cancel alert success or failure status
    */
-  @EnumField(ResponseStatus)
-  stat: ResponseStatus;
+  @StringField({ isArray: false })
+  stat: string;
   /**
    * It will be present only on successful response.
    */
@@ -44,17 +38,11 @@ export class GetMaxPayoutAmountResponseModel {
   @IsOptional()
   request_time?: Date;
   /**
-   * Account Id
+   * Alert Id
    */
   @StringField({ isArray: false })
   @IsOptional()
-  actid?: string;
-  /**
-   * Maximum payout amount
-   */
-  @NumberField({ isArray: false })
-  @IsOptional()
-  payout?: number;
+  al_id?: string;
   /**
    * Error message if the request failed
    */

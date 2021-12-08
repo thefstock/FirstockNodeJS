@@ -196,6 +196,7 @@ function createFieldProperty(
   }
   else {
     usedFields.add('Nested');
+    usedFields.add(spec.type);
     decorators.push(
       ts.factory.createDecorator(
         ts.factory.createCallExpression(

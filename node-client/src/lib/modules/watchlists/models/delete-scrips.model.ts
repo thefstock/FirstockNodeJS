@@ -6,28 +6,40 @@ import { IsOptional } from 'class-validator';
 
 import {
   EnumField,
+  Joined,
   ResponseStatus,
   StringField,
   TimestampField,
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for delete scrips
  */
-export class LogoutRequestModel {
+export class DeleteScripsRequestModel {
   /**
    * The user id of the login user
    */
   @StringField({ isArray: false })
   uid: string;
+  /**
+   * Name of the Watchlist, for which scrip list is required
+   */
+  @StringField({ isArray: false })
+  wlname: string;
+  /**
+   * List of scrips
+   */
+  @StringField({ isArray: true })
+  @Joined()
+  scrips: string[];
 }
 
 /**
- * The response model for logout
+ * The response model for delete scrips
  */
-export class LogoutResponseModel {
+export class DeleteScripsResponseModel {
   /**
-   * The logout success or failure status
+   * The delete scrips success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
