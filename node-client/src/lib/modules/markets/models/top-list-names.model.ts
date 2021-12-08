@@ -5,29 +5,36 @@
 import { IsOptional } from 'class-validator';
 
 import {
+  BasketCriteriaPair,
   EnumField,
+  Nested,
   ResponseStatus,
   StringField,
   TimestampField,
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for top list names
  */
-export class LogoutRequestModel {
+export class TopListNamesRequestModel {
   /**
    * The user id of the login user
    */
   @StringField({ isArray: false })
   uid: string;
+  /**
+   * Exchange
+   */
+  @StringField({ isArray: false })
+  exch: string;
 }
 
 /**
- * The response model for logout
+ * The response model for top list names
  */
-export class LogoutResponseModel {
+export class TopListNamesResponseModel {
   /**
-   * The logout success or failure status
+   * The top list names success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
@@ -37,6 +44,12 @@ export class LogoutResponseModel {
   @TimestampField()
   @IsOptional()
   request_time?: Date;
+  /**
+   * Array of Basket, Criteria pair
+   */
+  @Nested(BasketCriteriaPair, { isArray: true })
+  @IsOptional()
+  values?: BasketCriteriaPair[];
   /**
    * Error message if the request failed
    */

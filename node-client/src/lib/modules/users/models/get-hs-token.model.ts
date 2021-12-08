@@ -12,20 +12,20 @@ import {
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for get hs token
  */
-export class LogoutRequestModel {
+export class GetHsTokenRequestModel {
   /**
-   * The user id of the login user
+   * The uid property
    */
   @StringField({ isArray: false })
   uid: string;
 }
 
 /**
- * The response model for logout
+ * The response model for get hs token
  */
-export class LogoutResponseModel {
+export class GetHsTokenResponseModel {
   /**
    * The logout success or failure status
    */
@@ -37,6 +37,12 @@ export class LogoutResponseModel {
   @TimestampField()
   @IsOptional()
   request_time?: Date;
+  /**
+   * One time Token to be sent to BackOffice or third party link
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  hstk?: string;
   /**
    * Error message if the request failed
    */

@@ -6,34 +6,50 @@ import { IsOptional } from 'class-validator';
 
 import {
   EnumField,
-  NumberField,
+  Nested,
   ResponseStatus,
   StringField,
+  TBContract,
   TimestampField,
 } from '../../../common';
 
 /**
- * The request model for get max payout amount
+ * The request model for top list
  */
-export class GetMaxPayoutAmountRequestModel {
+export class TopListRequestModel {
   /**
    * The user id of the login user
    */
   @StringField({ isArray: false })
   uid: string;
   /**
-   * The account id
+   * Exchange
    */
   @StringField({ isArray: false })
-  actid: string;
+  exch: string;
+  /**
+   * T or B Top or Bottom
+   */
+  @StringField({ isArray: false })
+  tb: string;
+  /**
+   * Basket name
+   */
+  @StringField({ isArray: false })
+  bskt: string;
+  /**
+   * Criteria
+   */
+  @StringField({ isArray: false })
+  crt: string;
 }
 
 /**
- * The response model for get max payout amount
+ * The response model for top list
  */
-export class GetMaxPayoutAmountResponseModel {
+export class TopListResponseModel {
   /**
-   * The get max payout amount success or failure status
+   * The top list success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
@@ -44,17 +60,11 @@ export class GetMaxPayoutAmountResponseModel {
   @IsOptional()
   request_time?: Date;
   /**
-   * Account Id
+   * Array of top / bottom contracts object
    */
-  @StringField({ isArray: false })
+  @Nested(TBContract, { isArray: true })
   @IsOptional()
-  actid?: string;
-  /**
-   * Maximum payout amount
-   */
-  @NumberField({ isArray: false })
-  @IsOptional()
-  payout?: number;
+  values?: TBContract[];
   /**
    * Error message if the request failed
    */

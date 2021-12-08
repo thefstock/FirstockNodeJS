@@ -6,15 +6,17 @@ import { IsOptional } from 'class-validator';
 
 import {
   EnumField,
+  Nested,
   ResponseStatus,
   StringField,
   TimestampField,
+  TradeDate,
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for get unsettled trading date
  */
-export class LogoutRequestModel {
+export class GetUnsettledTradingDateRequestModel {
   /**
    * The user id of the login user
    */
@@ -23,11 +25,11 @@ export class LogoutRequestModel {
 }
 
 /**
- * The response model for logout
+ * The response model for get unsettled trading date
  */
-export class LogoutResponseModel {
+export class GetUnsettledTradingDateResponseModel {
   /**
-   * The logout success or failure status
+   * The get unsettled trading date success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
@@ -37,6 +39,12 @@ export class LogoutResponseModel {
   @TimestampField()
   @IsOptional()
   request_time?: Date;
+  /**
+   * The list of trade date items
+   */
+  @Nested(TradeDate, { isArray: true })
+  @IsOptional()
+  trd_date?: TradeDate[];
   /**
    * Error message if the request failed
    */

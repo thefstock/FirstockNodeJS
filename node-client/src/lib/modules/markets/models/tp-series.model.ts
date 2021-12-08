@@ -5,46 +5,50 @@
 import { IsOptional } from 'class-validator';
 
 import {
+  DateField,
   EnumField,
-  NumberField,
   ResponseStatus,
   StringField,
   TimestampField,
 } from '../../../common';
 
 /**
- * The request model for get content list
+ * The request model for tp series
  */
-export class GetContentListRequestModel {
+export class TpSeriesRequestModel {
   /**
    * The user id of the login user
    */
   @StringField({ isArray: false })
   uid: string;
   /**
-   * Exchange Name
+   * Exchange
    */
   @StringField({ isArray: false })
   exch: string;
   /**
-   * Condition list
+   * Token
    */
   @StringField({ isArray: false })
-  condition_name: string;
+  token: string;
   /**
-   * Basket Name
+   * Start time
    */
-  @StringField({ isArray: false })
-  @IsOptional()
-  basket?: string;
+  @DateField('DD-MM-YYYY hh:mm:ss')
+  st: Date;
+  /**
+   * End Time
+   */
+  @DateField('DD-MM-YYYY hh:mm:ss')
+  et: Date;
 }
 
 /**
- * The response model for get content list
+ * The response model for tp series
  */
-export class GetContentListResponseModel {
+export class TpSeriesResponseModel {
   /**
-   * The get content list success or failure status
+   * The time price series success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
@@ -55,59 +59,65 @@ export class GetContentListResponseModel {
   @IsOptional()
   request_time?: Date;
   /**
-   * Trading symbol
+   * DD/MM/CCYY hh:mm:ss
+   */
+  @TimestampField()
+  @IsOptional()
+  time?: Date;
+  /**
+   * Interval open
    */
   @StringField({ isArray: false })
   @IsOptional()
-  tsym?: string;
+  into?: string;
   /**
-   * LTP
-   */
-  @NumberField({ isArray: false })
-  @IsOptional()
-  lp?: number;
-  /**
-   * Close price
-   */
-  @NumberField({ isArray: false })
-  @IsOptional()
-  c?: number;
-  /**
-   * High price
-   */
-  @NumberField({ isArray: false })
-  @IsOptional()
-  h?: number;
-  /**
-   * Low price
-   */
-  @NumberField({ isArray: false })
-  @IsOptional()
-  l?: number;
-  /**
-   * Average trade price
-   */
-  @NumberField({ isArray: false })
-  @IsOptional()
-  ap?: number;
-  /**
-   * Volume
-   */
-  @NumberField({ isArray: false })
-  @IsOptional()
-  v?: number;
-  /**
-   * Last trade time
+   * Interval high
    */
   @StringField({ isArray: false })
   @IsOptional()
-  ltt?: string;
+  inth?: string;
   /**
-   * Percentage change
+   * Interval low
    */
-  @NumberField({ isArray: false })
+  @StringField({ isArray: false })
   @IsOptional()
-  pc?: number;
+  intl?: string;
+  /**
+   * Interval close
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  intc?: string;
+  /**
+   * Interval vwap
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  intvwap?: string;
+  /**
+   * Interval volume
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  intv?: string;
+  /**
+   * volume
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  v?: string;
+  /**
+   * Interval io change
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  intoi?: string;
+  /**
+   * oi
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  oi?: string;
   /**
    * Error message if the request failed
    */

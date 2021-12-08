@@ -6,56 +6,55 @@ import { IsOptional } from 'class-validator';
 
 import {
   EnumField,
-  Hashed,
+  RequestSourceType,
   ResponseStatus,
   StringField,
   TimestampField,
 } from '../../../common';
 
 /**
- * The request model for change password
+ * The request model for set device pin
  */
-export class ChangePasswordRequestModel {
+export class SetDevicePinRequestModel {
   /**
    * User Id
    */
   @StringField({ isArray: false })
   uid: string;
   /**
-   * The old password
+   * IMEI or device unique fingerprint
    */
   @StringField({ isArray: false })
-  @Hashed()
-  oldpwd: string;
+  imei: string;
   /**
-   * The new password
+   * Access type
+   */
+  @EnumField(RequestSourceType)
+  source: RequestSourceType;
+  /**
+   * New pin
    */
   @StringField({ isArray: false })
-  pwd: string;
+  dpin: string;
 }
 
 /**
- * The response model for change password
+ * The response model for set device pin
  */
-export class ChangePasswordResponseModel {
+export class SetDevicePinResponseModel {
   /**
-   * Password change success or failure status
+   * The set device pin success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
   /**
-   * Response recieved time
+   * It will be present only on successful setting of new pin.
    */
   @TimestampField()
-  request_time: Date;
-  /**
-   * This will be present only in case of success. Number of days to expiry will be present in same.
-   */
-  @StringField({ isArray: false })
   @IsOptional()
-  dmsg?: string;
+  request_time?: Date;
   /**
-   * Error message if password change failed
+   * Error message if the request failed
    */
   @StringField({ isArray: false })
   @IsOptional()

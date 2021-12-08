@@ -12,22 +12,27 @@ import {
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for cancel order
  */
-export class LogoutRequestModel {
+export class CancelOrderRequestModel {
   /**
-   * The user id of the login user
+   * Logged in User Id
    */
   @StringField({ isArray: false })
   uid: string;
+  /**
+   * The order number, which needs to be cancelled
+   */
+  @StringField({ isArray: false })
+  norenordno: string;
 }
 
 /**
- * The response model for logout
+ * The response model for cancel order
  */
-export class LogoutResponseModel {
+export class CancelOrderResponseModel {
   /**
-   * The logout success or failure status
+   * The cancel order success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
@@ -37,6 +42,12 @@ export class LogoutResponseModel {
   @TimestampField()
   @IsOptional()
   request_time?: Date;
+  /**
+   * Noren Order number of the order modified.
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  result?: string;
   /**
    * Error message if the request failed
    */

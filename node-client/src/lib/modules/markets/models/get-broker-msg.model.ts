@@ -12,9 +12,9 @@ import {
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for get broker msg
  */
-export class LogoutRequestModel {
+export class GetBrokerMsgRequestModel {
   /**
    * The user id of the login user
    */
@@ -23,11 +23,11 @@ export class LogoutRequestModel {
 }
 
 /**
- * The response model for logout
+ * The response model for get broker msg
  */
-export class LogoutResponseModel {
+export class GetBrokerMsgResponseModel {
   /**
-   * The logout success or failure status
+   * The get broker message success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
@@ -37,6 +37,18 @@ export class LogoutResponseModel {
   @TimestampField()
   @IsOptional()
   request_time?: Date;
+  /**
+   * This will be present only in case of success
+   */
+  @StringField({ isArray: false })
+  @IsOptional()
+  dmsg?: string;
+  /**
+   * Noren Time
+   */
+  @TimestampField()
+  @IsOptional()
+  norentm?: Date;
   /**
    * Error message if the request failed
    */

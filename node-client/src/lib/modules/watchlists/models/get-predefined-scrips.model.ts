@@ -6,28 +6,35 @@ import { IsOptional } from 'class-validator';
 
 import {
   EnumField,
+  Nested,
   ResponseStatus,
+  Scrip,
   StringField,
   TimestampField,
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for get predefined scrips
  */
-export class LogoutRequestModel {
+export class GetPredefinedScripsRequestModel {
   /**
    * The user id of the login user
    */
   @StringField({ isArray: false })
   uid: string;
+  /**
+   * Name of the Watchlist, for which scrip list is required
+   */
+  @StringField({ isArray: false })
+  wlname: string;
 }
 
 /**
- * The response model for logout
+ * The response model for get predefined scrips
  */
-export class LogoutResponseModel {
+export class GetPredefinedScripsResponseModel {
   /**
-   * The logout success or failure status
+   * The get predefined scrips success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
@@ -37,6 +44,11 @@ export class LogoutResponseModel {
   @TimestampField()
   @IsOptional()
   request_time?: Date;
+  /**
+   * Watch List names as a json array of strings.
+   */
+  @Nested(Scrip, { isArray: true })
+  values: Scrip[];
   /**
    * Error message if the request failed
    */

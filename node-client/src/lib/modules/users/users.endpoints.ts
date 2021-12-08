@@ -1,6 +1,8 @@
 /**
- * The api endpoint paths stored as constants
- */
+ * @module
+ * The endpoints for users module
+ *  */
+
 const endpoints = {
   LOGIN: 'QuickAuth',
   LOGIN_WITH_DPIN: 'PinAuth',
@@ -9,10 +11,10 @@ const endpoints = {
   CHANGE_PASSWORD: 'Changepwd',
   SET_DEVICE_PIN: 'SetPin',
   GET_HS_TOKEN: 'GetHsToken',
-  VERIFY_HS_TOKEN: 'ValidateHsToken',
+  VALIDATE_HS_TOKEN: 'ValidateHsToken',
   USER_DETAILS: 'UserDetails',
   CLIENT_DETAILS: 'ClientDetails',
   SAVE_FCM_TOKEN: 'SaveFMCToken',
-}
+};
 
 export default endpoints;

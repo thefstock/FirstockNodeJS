@@ -5,16 +5,18 @@
 import { IsOptional } from 'class-validator';
 
 import {
+  AlertTypeModel,
   EnumField,
+  Nested,
   ResponseStatus,
   StringField,
   TimestampField,
 } from '../../../common';
 
 /**
- * The request model for logout
+ * The request model for get enabled gtts
  */
-export class LogoutRequestModel {
+export class GetEnabledGttsRequestModel {
   /**
    * The user id of the login user
    */
@@ -23,11 +25,11 @@ export class LogoutRequestModel {
 }
 
 /**
- * The response model for logout
+ * The response model for get enabled gtts
  */
-export class LogoutResponseModel {
+export class GetEnabledGttsResponseModel {
   /**
-   * The logout success or failure status
+   * The get enabled gtts success or failure status
    */
   @EnumField(ResponseStatus)
   stat: ResponseStatus;
@@ -37,6 +39,12 @@ export class LogoutResponseModel {
   @TimestampField()
   @IsOptional()
   request_time?: Date;
+  /**
+   * List of alert types
+   */
+  @Nested(AlertTypeModel, { isArray: true })
+  @IsOptional()
+  ai_ts?: AlertTypeModel[];
   /**
    * Error message if the request failed
    */
