@@ -16,4 +16,5 @@ export interface IModelSpec {
   description?: string;
   isOptional?: boolean;
   isArray?: boolean;
+  modifiers?: string[]
 }
