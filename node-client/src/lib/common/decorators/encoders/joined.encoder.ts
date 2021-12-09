@@ -40,7 +40,7 @@ function isSeparator(options: string | IJoinedOptions): options is string {
  */
 function parseOptions(separatorOrOptions: string | IJoinedOptions): IJoinedOptions {
   if (!isDefined(separatorOrOptions)) {
-    return { separator: ',' };
+    return { separator: '|' };
   }
   else if (isSeparator(separatorOrOptions)) {
     return { separator: separatorOrOptions };

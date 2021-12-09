@@ -72,34 +72,46 @@ export abstract class DataSource {
    */
   async send<T>({ endpoint, data, key, responseClass, requestClass }: IDataSourceSendOptions<T>) {
     // get key from context if not provided
-    key = key ?? this.context.getState('key');
+    key = key ?? this.context.getToken();
     // convert data to model instance
     const model = ModelUtils.parse(requestClass, data);
     // convert model to json string
     const payload = ModelUtils.stringify(model);
     // send request
-    const response = await this.request(endpoint, payload, key);
+    const params: string[] = this.buildParams(payload, key);
+    const response = await this.request(endpoint, params);
     // parse the response
     return ModelUtils.parse(responseClass, response);
   }
 
+/* -------------------------------------------------------------------------- */
+/*                              PROTECTED METHODS                             */
+/* -------------------------------------------------------------------------- */
+
   /**
    * Send request to REST API server
    * @param url The relative url to send the request
-   * @param payload The payload for the request
-   * @param [key] Used for authentication. Optional
+   * @param params The payload for the request
    */
-  protected async request(url: string, payload: string, key?: string): Promise<Record<string, any>> {
+  protected async request(url: string, params: string[]): Promise<any> {
     // generate url
-    const params: string[] = [`jData=${payload}`];
-    if (key) params.push(`jKey=${key}`);
-    // get data
     const fullUrl = this.expandUrl(url);
     // send request
     const { data } = await this.context.agent.post(fullUrl, params.join('&'), {
       headers: this.headers
     });
     return data;
+  }
+
+  /**
+   * Build the params list from payload
+   * @param payload The payload json
+   * @param key The key supplied if any
+   */
+  protected buildParams(payload: string, key?: string): string[] {
+    const params: string[] = [`jData=${payload}`];
+    if (key) params.push(`jKey=${key}`);
+    return params;
   }
 
   /* -------------------------------------------------------------------------- */

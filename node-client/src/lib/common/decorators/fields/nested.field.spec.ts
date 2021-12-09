@@ -84,3 +84,59 @@ test('should serialize nested models properly', async (t) => {
   t.is(obj2.name, 'root');
   t.deepEqual(obj2.nested, { name: 'branch', nested: { date: '31-05-1995' } })
 });
+
+test('should manage nested arrays properly', async (t) => {
+  class NestedArray {
+    @StringField()
+    name: string;
+
+    @Nested(NestedFirst, { isArray: true })
+    nested: NestedFirst[];
+  }
+
+  const nested = ModelUtils.parse(NestedArray, {
+    name: 'root',
+    nested: [
+      {
+        name: 'branch 1',
+        nested: {
+          date: '31-05-1995',
+        },
+      },
+      {
+        name: 'branch 2',
+        nested: {
+          date: '16-08-1998',
+        },
+      },
+    ],
+  });
+
+  t.true(nested instanceof NestedArray);
+  t.true(nested.nested instanceof Array);
+  t.is(nested.nested.length, 2);
+  t.true(nested.nested[0] instanceof NestedFirst);
+  t.is(nested.nested[0].name, 'branch 1');
+  t.is(nested.nested[1].name, 'branch 2');
+  t.true(nested.nested[0].nested instanceof Wrapper);
+  t.true(nested.nested[0].nested.date instanceof Date);
+
+  const obj1 = ModelUtils.serialize(nested);
+  t.deepEqual(obj1, {
+    name: 'root',
+    nested: [
+      {
+        name: 'branch 1',
+        nested: {
+          date: '31-05-1995',
+        },
+      },
+      {
+        name: 'branch 2',
+        nested: {
+          date: '16-08-1998',
+        },
+      },
+    ],
+  });
+});
