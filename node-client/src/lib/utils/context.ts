@@ -26,17 +26,23 @@ export class Context {
    * Uses an axios instance
    */
   #agent: AxiosInstance = axios.create();
-  get agent(): AxiosInstance { return this.#agent }
+  get agent(): AxiosInstance {
+    return this.#agent;
+  }
   /**
    * The url of the api server.
    */
   #apiUrl: string;
-  get apiUrl(): string { return this.#apiUrl }
+  get apiUrl(): string {
+    return this.#apiUrl;
+  }
   /**
    * The url of the websocket server.
    */
-  #wsUrl: string
-  get wsUrl(): string { return this.#wsUrl; }
+  #wsUrl: string;
+  get wsUrl(): string {
+    return this.#wsUrl;
+  }
   /**
    * Create a new context
    * @param params The context parameters
@@ -67,5 +73,26 @@ export class Context {
    */
   deleteState(key: string): void {
     this.state.delete(key);
+  }
+  /**
+   * Check if a state variable is available on the context
+   * @param key The key for the state variable
+   */
+  hasState(key: string): boolean {
+    return this.state.has(key);
+  }
+
+  /**
+   * Get stored token from state. Alias to `context.getState('key')`
+   */
+  getToken(): string {
+    return this.getState('key');
+  }
+  /**
+   * Store the token on state. Alias to `context.setState('key', token)`
+   * @param token The token to store
+   */
+  setToken(token: string) {
+    this.setState('key', token);
   }
 }

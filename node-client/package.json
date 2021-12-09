@@ -50,8 +50,10 @@
     "hash.js": "^1.1.7",
     "moment": "^2.29.1",
     "reflect-metadata": "^0.1.13",
+    "rxjs": "^7.4.0",
     "typedi": "^0.10.0",
-    "url-join": "^4.0.1"
+    "url-join": "^4.0.1",
+    "websocket": "^1.0.34"
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
@@ -61,6 +63,7 @@
     "@types/sinon": "^10.0.6",
     "@types/string-format": "^2.0.0",
     "@types/url-join": "^4.0.1",
+    "@types/websocket": "^1.0.4",
     "@typescript-eslint/eslint-plugin": "^4.0.1",
     "@typescript-eslint/parser": "^4.0.1",
     "ava": "^3.12.1",

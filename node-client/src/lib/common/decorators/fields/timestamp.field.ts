@@ -4,7 +4,7 @@ import { Field } from "../common";
 
 export interface ITimestampFieldOptions {
   /**
-   * If this option is set to true, will return number of seconds since epoch
+   * If this option is set to true, will return number of seconds since epoch (Default: true)
    */
   unix?: boolean;
 }
@@ -15,7 +15,7 @@ export interface ITimestampFieldOptions {
  * @returns property decorator
  */
 export function TimestampField(options: ITimestampFieldOptions = {}) {
-  const { unix = false } = options;
+  const { unix = true } = options;
   return Field({
     encoder({ value }) {
       return unix ? moment(value).unix() : moment(value).valueOf();

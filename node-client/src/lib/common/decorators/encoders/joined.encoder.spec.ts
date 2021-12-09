@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import test from 'ava';
 
 import { ModelUtils } from '../../../utils/model-utils';
@@ -12,18 +14,18 @@ test('should join the list properly with the default separator when no option is
   const test = ModelUtils.parse(TestJoined, { roles: ['admin', 'user'] });
   const obj = ModelUtils.serialize(test);
 
-  t.is(obj.roles, 'admin,user');
+  t.is(obj.roles, 'admin|user');
 });
 
 test('should use the argument as the separator option if it is string', async (t) => {
   class TestJoined {
-    @Joined('|')
+    @Joined(',')
     roles: string[];
   }
   const test = ModelUtils.parse(TestJoined, { roles: ['admin', 'user'] });
   const obj = ModelUtils.serialize(test);
 
-  t.is(obj.roles, 'admin|user');
+  t.is(obj.roles, 'admin,user');
 });
 
 test('should use separator property from the options if argument is passed as object', async (t) => {

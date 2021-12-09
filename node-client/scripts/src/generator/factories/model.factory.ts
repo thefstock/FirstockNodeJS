@@ -293,13 +293,14 @@ function getTypeSymbol(type: FieldTypeGroup, spec: IModelSpec) {
 function getFieldType(type: string): FieldTypeGroup {
   // if type is in this list, it will be a enum field
   const ENUM_FIELDS = [
-    "RequestSourceType",
-    "ResponseStatus",
-    "PriceType",
-    "TransactionType",
-    "RetentionType",
-    "AlertValidity",
-    "AlertType"
+    'RequestSourceType',
+    'ResponseStatus',
+    'PriceType',
+    'TransactionType',
+    'RetentionType',
+    'AlertValidity',
+    'AlertType',
+    'MessageTopic',
   ];
   // patterns to match some primitive types
   const stringTypePattern = /^(str(ing)?)|(SecretStr)$/i;

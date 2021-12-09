@@ -1,17 +1,25 @@
 /**
  * @summary The client combines all the modules and abstracts the inner logic
  */
+import { isString } from 'class-validator';
 import { Container, Inject, Service } from 'typedi';
 
+import { AlertsService } from './modules/alerts/alerts.service';
+import { FundsService } from './modules/funds/funds.service';
+import { HoldingsLimitsService } from './modules/holdings-limits/holdings-limits.service';
+import { MarketsService } from './modules/markets/markets.service';
+import { OrdersService } from './modules/orders/orders.service';
 import {
   LoginRequestModel,
   LoginResponseModel,
   LogoutRequestModel,
-  LogoutResponseModel
-} from './modules/users';
+  LogoutResponseModel,
+} from './modules/users/models';
 import { UsersService } from './modules/users/users.service';
+import { WatchlistsService } from './modules/watchlists/watchlists.service';
 import { PlainObject } from './utils';
 import { Context, IContextParams } from './utils/context';
+import { WsClient } from './websockets/client';
 
 /**
  * The node client for communicating with external api.
@@ -31,24 +39,33 @@ export class Client {
    * @param users The users service
    */
   constructor(
-    public readonly users: UsersService
-  ) { }
+    public readonly alerts: AlertsService,
+    public readonly funds: FundsService,
+    public readonly holdings_limits: HoldingsLimitsService,
+    public readonly markets: MarketsService,
+    public readonly orders: OrdersService,
+    public readonly users: UsersService,
+    public readonly watchlists: WatchlistsService,
+    public readonly ws: WsClient
+  ) {}
 
   /**
    * Login user. Alias for `client.users.login`
    * @param data The user login data
    */
-  async login(data: PlainObject<LoginRequestModel>): Promise<LoginResponseModel> {
+  async login(
+    data: PlainObject<LoginRequestModel>
+  ): Promise<LoginResponseModel> {
     const response = await this.users.login(data);
     // store the `susertoken` in context state if response was successful
     if (response.susertoken) {
-      this.context.setState('key', response.susertoken);
+      this.context.setToken(response.susertoken);
     }
     return response;
   }
 
   /**
-   * Logout user. Alias for `client.users.logout`
+   * Logout user using uid.
    * @param uid The id of the login user
    */
   async logout(uid: string): Promise<LogoutResponseModel>;
@@ -56,9 +73,14 @@ export class Client {
    * Logout user. Alias for `client.users.logout`
    * @param data The user logout data
    */
-  async logout(data: PlainObject<LogoutRequestModel>): Promise<LoginResponseModel>;
-  async logout(uidOrData: string | PlainObject<LogoutRequestModel>): Promise<LoginResponseModel> {
-    const response = await this.users.logout(uidOrData as any);
+  async logout(
+    data: PlainObject<LogoutRequestModel>
+  ): Promise<LoginResponseModel>;
+  async logout(
+    uidOrData: string | PlainObject<LogoutRequestModel>
+  ): Promise<LoginResponseModel> {
+    const data = isString(uidOrData) ? { uid: uidOrData } : uidOrData;
+    const response = await this.users.logout(data);
     // remove key from context state
     this.context.deleteState('key');
     return response;
