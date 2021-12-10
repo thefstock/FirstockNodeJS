@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -16,6 +12,7 @@ import {
 
 /**
  * The request model for place order
+ * @category Models
  */
 export class PlaceOrderRequestModel {
   /**
@@ -162,6 +159,7 @@ export class PlaceOrderRequestModel {
 
 /**
  * The response model for place order
+ * @category Models
  */
 export class PlaceOrderResponseModel {
   /**

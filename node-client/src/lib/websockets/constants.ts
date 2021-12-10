@@ -1,5 +1,5 @@
 /**
- * @module
+ * @internal
  * The constant values used in websocket module
  */
 

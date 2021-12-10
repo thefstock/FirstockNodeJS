@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -13,6 +9,7 @@ import {
 
 /**
  * The request model for logout
+ * @category Models
  */
 export class LogoutRequestModel {
   /**
@@ -24,6 +21,7 @@ export class LogoutRequestModel {
 
 /**
  * The response model for logout
+ * @category Models
  */
 export class LogoutResponseModel {
   /**

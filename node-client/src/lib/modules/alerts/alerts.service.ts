@@ -30,6 +30,7 @@ import {
 
 /**
  * The data source service for alerts module.
+ * @category Data Sources
  */
 @Service()
 export class AlertsService extends DataSource {

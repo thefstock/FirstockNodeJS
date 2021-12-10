@@ -1,8 +1,7 @@
 /**
- * @module
+ * @internal
  * The endpoints for watchlists module
  *  */
-
 const endpoints = {
   GET_NAMES: 'MWList',
   GET_WATCHLIST: 'MarketWatch',

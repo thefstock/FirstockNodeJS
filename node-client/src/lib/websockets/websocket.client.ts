@@ -3,7 +3,7 @@ import { filter, firstValueFrom, Observable, Subject } from 'rxjs';
 import { Inject, Service } from 'typedi';
 import { IMessageEvent, w3cwebsocket } from 'websocket';
 
-import { ResponseStatus } from '../common';
+import { MessageTopic, ResponseStatus } from '../common';
 import { Context, ModelUtils, PlainObject } from '../utils';
 
 import { WS_CONNECTION_RESULT_KEY } from './constants';
@@ -21,19 +21,21 @@ import {
   TouchlineUnsubscribeModel,
   WebsocketConnectionModel,
 } from './models';
-import { MessageTopic } from './topics';
 
-type onOpenHandler = (
+export type onOpenHandler = (
   result: IWebsocketConnectionResult
 ) => void | Promise<void>;
-type onCloseHandler = () => void | Promise<void>;
-type onErrorHandler = (error: Error) => void | Promise<void>;
-type onMessageHandler = (message: IWebsocketMessage) => void | Promise<void>;
+export type onCloseHandler = () => void | Promise<void>;
+export type onErrorHandler = (error: Error) => void | Promise<void>;
+export type onMessageHandler = (
+  message: IWebsocketMessage
+) => void | Promise<void>;
 
 /**
  * The websocket client for listening to events on the market.
  * The class exposes methods to subscribe and unsubscribe to different feeds (touchline, depth & order updates).
- * It also exposes corresponding observables (touchline$, depth$ and order$) that emits update from each subscription
+ * It also exposes corresponding observables (touchline$, depth$ and order$) that emits update from each subscription.
+ * @category Clients
  */
 @Service()
 export class WsClient {

@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for modify order
+ * @category Models
  */
 export class ModifyOrderRequestModel {
   /**
@@ -89,6 +86,7 @@ export class ModifyOrderRequestModel {
 
 /**
  * The response model for modify order
+ * @category Models
  */
 export class ModifyOrderResponseModel {
   /**

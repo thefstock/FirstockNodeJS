@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for get max payout amount
+ * @category Models
  */
 export class GetMaxPayoutAmountRequestModel {
   /**
@@ -30,6 +27,7 @@ export class GetMaxPayoutAmountRequestModel {
 
 /**
  * The response model for get max payout amount
+ * @category Models
  */
 export class GetMaxPayoutAmountResponseModel {
   /**

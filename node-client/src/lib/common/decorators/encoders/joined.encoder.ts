@@ -4,6 +4,7 @@ import { Encode } from '../common';
 
 /**
  * The options for `Joined` encoder
+ * @internal
  */
 export interface IJoinedOptions {
   separator?: string;
@@ -12,6 +13,7 @@ export interface IJoinedOptions {
 /**
  * Used to encode string array into a 'x'-separated string
  * @param options The options for the decorator (Optional).
+ * @internal
  */
 export function Joined(options?: IJoinedOptions): PropertyDecorator;
 /**
@@ -29,12 +31,14 @@ export function Joined(separatorOrOptions?: IJoinedOptions | string): PropertyDe
 /**
  * Check whether the options passed is the separator
  * @param options The options passed to the `Joined` encoder.
+ * @internal
  */
 function isSeparator(options: string | IJoinedOptions): options is string {
   return (typeof options === "string");
 }
 
 /**
+ * @internal
  * Convert the argument passed to proper options object.
  * @param separatorOrOptions The argument passed to the `Joined` encoder
  */

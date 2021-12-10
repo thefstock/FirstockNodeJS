@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -13,6 +9,7 @@ import {
 
 /**
  * The request model for modify alert
+ * @category Models
  */
 export class ModifyAlertRequestModel {
   /**
@@ -59,6 +56,7 @@ export class ModifyAlertRequestModel {
 
 /**
  * The response model for modify alert
+ * @category Models
  */
 export class ModifyAlertResponseModel {
   /**

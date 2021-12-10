@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for tp series
+ * @category Models
  */
 export class TpSeriesRequestModel {
   /**
@@ -45,6 +42,7 @@ export class TpSeriesRequestModel {
 
 /**
  * The response model for tp series
+ * @category Models
  */
 export class TpSeriesResponseModel {
   /**

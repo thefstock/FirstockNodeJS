@@ -2,6 +2,9 @@ import moment from "moment";
 
 import { Field } from "../common";
 
+/**
+ * @internal
+ */
 export interface ITimestampFieldOptions {
   /**
    * If this option is set to true, will return number of seconds since epoch (Default: true)
@@ -10,6 +13,7 @@ export interface ITimestampFieldOptions {
 }
 
 /**
+ * @internal
  * The timestamp field
  * @param options The options to the timestamp field
  * @returns property decorator

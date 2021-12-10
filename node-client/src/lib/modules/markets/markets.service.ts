@@ -24,6 +24,7 @@ import {
 
 /**
  * The data source service for markets module.
+ * @category Data Sources
  */
 @Service()
 export class MarketsService extends DataSource {

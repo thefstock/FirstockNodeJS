@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -68,6 +64,7 @@ export class MarketOptionChain {
 
 /**
  * The request model for get option chain
+ * @category Models
  */
 export class GetOptionChainRequestModel {
   /**
@@ -105,6 +102,7 @@ export class GetOptionChainRequestModel {
 
 /**
  * The response model for get option chain
+ * @category Models
  */
 export class GetOptionChainResponseModel {
   /**

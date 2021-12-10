@@ -1,13 +1,13 @@
 /**
- * @module
- * The request and response models for
- *  */
+ * The request and response models for cancel alert
+ */
 import { IsOptional } from 'class-validator';
 
 import { StringField, TimestampField } from '../../../common';
 
 /**
  * The request model for cancel alert
+ * @category Models
  */
 export class CancelAlertRequestModel {
   /**
@@ -24,6 +24,7 @@ export class CancelAlertRequestModel {
 
 /**
  * The response model for cancel alert
+ * @category Models
  */
 export class CancelAlertResponseModel {
   /**

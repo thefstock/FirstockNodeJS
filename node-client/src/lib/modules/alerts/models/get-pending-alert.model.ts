@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for get pending alert
+ * @category Models
  */
 export class GetPendingAlertRequestModel {
   /**
@@ -25,6 +22,7 @@ export class GetPendingAlertRequestModel {
 
 /**
  * The response model for get pending alert
+ * @category Models
  */
 export class GetPendingAlertResponseModel {
   /**

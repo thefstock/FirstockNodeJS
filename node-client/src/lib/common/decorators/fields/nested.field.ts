@@ -4,6 +4,7 @@ import { ModelUtils } from "../../../utils/model-utils";
 import { Field } from "../common";
 
 /**
+ * @internal
  * The options for the `Nested` decorator
  */
 export interface INestedFieldOptions {
@@ -11,6 +12,7 @@ export interface INestedFieldOptions {
 }
 
 /**
+ * @internal
  * Include a nested model
  * @param constructor The class constructor
  * @returns a property decorator

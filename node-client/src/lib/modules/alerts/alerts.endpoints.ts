@@ -1,8 +1,7 @@
 /**
- * @module
+ * @internal
  * The endpoints for alerts module
  *  */
-
 const endpoints = {
   SET_ALERT: 'SetAlert',
   CANCEL_ALERT: 'CancelAlert',

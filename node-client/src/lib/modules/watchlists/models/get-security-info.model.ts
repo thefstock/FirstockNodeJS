@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for get security info
+ * @category Models
  */
 export class GetSecurityInfoRequestModel {
   /**
@@ -37,6 +34,7 @@ export class GetSecurityInfoRequestModel {
 
 /**
  * The response model for get security info
+ * @category Models
  */
 export class GetSecurityInfoResponseModel {
   /**

@@ -1,11 +1,8 @@
 /**
- * @module
  * The interfaces used for the websocket communication
  */
 
-import { ResponseStatus } from '../common';
-
-import { MessageTopic } from './topics';
+import { MessageTopic, ResponseStatus } from '../common';
 
 /**
  * Base interface for all the message interfaces

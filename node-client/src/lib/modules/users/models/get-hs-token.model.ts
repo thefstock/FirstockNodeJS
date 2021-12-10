@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -13,6 +9,7 @@ import {
 
 /**
  * The request model for get hs token
+ * @category Models
  */
 export class GetHsTokenRequestModel {
   /**
@@ -24,6 +21,7 @@ export class GetHsTokenRequestModel {
 
 /**
  * The response model for get hs token
+ * @category Models
  */
 export class GetHsTokenResponseModel {
   /**

@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for get predefined scrips
+ * @category Models
  */
 export class GetPredefinedScripsRequestModel {
   /**
@@ -31,6 +28,7 @@ export class GetPredefinedScripsRequestModel {
 
 /**
  * The response model for get predefined scrips
+ * @category Models
  */
 export class GetPredefinedScripsResponseModel {
   /**

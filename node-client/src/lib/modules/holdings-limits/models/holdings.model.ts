@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -16,6 +12,7 @@ import {
 
 /**
  * The request model for holdings
+ * @category Models
  */
 export class HoldingsRequestModel {
   /**
@@ -37,6 +34,7 @@ export class HoldingsRequestModel {
 
 /**
  * The response model for holdings
+ * @category Models
  */
 export class HoldingsResponseModel {
   /**

@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -16,6 +12,7 @@ import {
 
 /**
  * The request model for single order history
+ * @category Models
  */
 export class SingleOrderHistoryRequestModel {
   /**
@@ -32,6 +29,7 @@ export class SingleOrderHistoryRequestModel {
 
 /**
  * The response model for single order history
+ * @category Models
  */
 export class SingleOrderHistoryResponseModel {
   /**

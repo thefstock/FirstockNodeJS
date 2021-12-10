@@ -1,8 +1,7 @@
 /**
- * @module
+ * @internal
  * The endpoints for users module
  *  */
-
 const endpoints = {
   LOGIN: 'QuickAuth',
   LOGIN_WITH_DPIN: 'PinAuth',

@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for get enabled gtts
+ * @category Models
  */
 export class GetEnabledGttsRequestModel {
   /**
@@ -26,6 +23,7 @@ export class GetEnabledGttsRequestModel {
 
 /**
  * The response model for get enabled gtts
+ * @category Models
  */
 export class GetEnabledGttsResponseModel {
   /**

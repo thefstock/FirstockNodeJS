@@ -3,6 +3,9 @@ import { IsBoolean, IsIn, IsNumber, IsString } from 'class-validator';
 
 import { Compose, Field } from '../common';
 
+/**
+ * @internal
+ */
 export interface IPrimitiveOptions {
   /**
    * whether the value is an array or not
@@ -11,6 +14,7 @@ export interface IPrimitiveOptions {
 }
 
 /**
+ * @internal
  * A string field decorator
  */
 export function StringField(options: IPrimitiveOptions = {}): PropertyDecorator {

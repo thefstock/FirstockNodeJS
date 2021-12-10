@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for get order margin
+ * @category Models
  */
 export class GetOrderMarginRequestModel {
   /**
@@ -114,6 +111,7 @@ export class GetOrderMarginRequestModel {
 
 /**
  * The response model for get order margin
+ * @category Models
  */
 export class GetOrderMarginResponseModel {
   /**

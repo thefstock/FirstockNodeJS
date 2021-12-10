@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -17,6 +13,7 @@ import {
 
 /**
  * The request model for get pending gtt order
+ * @category Models
  */
 export class GetPendingGttOrderRequestModel {
   /**
@@ -28,6 +25,7 @@ export class GetPendingGttOrderRequestModel {
 
 /**
  * The response model for get pending gtt order
+ * @category Models
  */
 export class GetPendingGttOrderResponseModel {
   /**

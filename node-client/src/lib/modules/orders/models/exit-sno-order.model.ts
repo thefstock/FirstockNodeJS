@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -13,6 +9,7 @@ import {
 
 /**
  * The request model for exit sno order
+ * @category Models
  */
 export class ExitSnoOrderRequestModel {
   /**
@@ -34,6 +31,7 @@ export class ExitSnoOrderRequestModel {
 
 /**
  * The response model for exit sno order
+ * @category Models
  */
 export class ExitSnoOrderResponseModel {
   /**

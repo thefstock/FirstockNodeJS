@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -17,6 +13,7 @@ import {
 
 /**
  * The request model for get basket margin
+ * @category Models
  */
 export class GetBasketMarginRequestModel {
   /**
@@ -122,6 +119,7 @@ export class GetBasketMarginRequestModel {
 
 /**
  * The response model for get basket margin
+ * @category Models
  */
 export class GetBasketMarginResponseModel {
   /**

@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for convert product
+ * @category Models
  */
 export class ConvertProductRequestModel {
   /**
@@ -71,6 +68,7 @@ export class ConvertProductRequestModel {
 
 /**
  * The response model for convert product
+ * @category Models
  */
 export class ConvertProductResponseModel {
   /**
