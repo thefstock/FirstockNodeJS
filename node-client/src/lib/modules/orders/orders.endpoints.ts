@@ -1,8 +1,7 @@
 /**
- * @module
+ * @internal
  * The endpoints for orders module
  *  */
-
 const endpoints = {
   PLACE_ORDER: 'PlaceOrder',
   MODIFY_ORDER: 'ModifyOrder',

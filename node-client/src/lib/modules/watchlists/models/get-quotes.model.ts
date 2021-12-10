@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for get quotes
+ * @category Models
  */
 export class GetQuotesRequestModel {
   /**
@@ -37,6 +34,7 @@ export class GetQuotesRequestModel {
 
 /**
  * The response model for get quotes
+ * @category Models
  */
 export class GetQuotesResponseModel {
   /**

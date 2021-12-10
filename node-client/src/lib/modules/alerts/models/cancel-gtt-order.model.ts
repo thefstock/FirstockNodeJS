@@ -1,13 +1,10 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import { StringField, TimestampField } from '../../../common';
 
 /**
  * The request model for cancel gtt order
+ * @category Models
  */
 export class CancelGttOrderRequestModel {
   /**
@@ -25,6 +22,7 @@ export class CancelGttOrderRequestModel {
 
 /**
  * The response model for cancel gtt order
+ * @category Models
  */
 export class CancelGttOrderResponseModel {
   /**

@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsEmail, IsIP, IsOptional } from 'class-validator';
 
 import {
@@ -16,6 +12,7 @@ import {
 
 /**
  * The request model for login
+ * @category Models
  */
 export class LoginRequestModel {
   /**
@@ -92,6 +89,7 @@ export class LoginRequestModel {
 
 /**
  * The response model for login
+ * @category Models
  */
 export class LoginResponseModel {
   /**

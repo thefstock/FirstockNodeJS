@@ -2,6 +2,7 @@ import { ValidationError } from "class-validator";
 
 /**
  * The validation errors raised while parsing a model
+ * @category Exceptions
  */
 export class ValidationException<T extends unknown = any> extends Error {
   /**

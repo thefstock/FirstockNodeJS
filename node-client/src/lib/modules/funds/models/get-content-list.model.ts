@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for get content list
+ * @category Models
  */
 export class GetContentListRequestModel {
   /**
@@ -41,6 +38,7 @@ export class GetContentListRequestModel {
 
 /**
  * The response model for get content list
+ * @category Models
  */
 export class GetContentListResponseModel {
   /**

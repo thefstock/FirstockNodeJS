@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -25,6 +21,7 @@ export class Basket {
 
 /**
  * The request model for get content basket
+ * @category Models
  */
 export class GetContentBasketRequestModel {
   /**
@@ -41,6 +38,7 @@ export class GetContentBasketRequestModel {
 
 /**
  * The response model for get content basket
+ * @category Models
  */
 export class GetContentBasketResponseModel {
   /**

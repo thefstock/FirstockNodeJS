@@ -1,5 +1,7 @@
 /**
- * @summary The client combines all the modules and abstracts the inner logic
+ * @module Client
+ * @summary The client combines all the modules and abstracts the inner logic.
+ * 
  */
 import { isString } from 'class-validator';
 import { Container, Inject, Service } from 'typedi';
@@ -19,15 +21,19 @@ import { UsersService } from './modules/users/users.service';
 import { WatchlistsService } from './modules/watchlists/watchlists.service';
 import { PlainObject } from './utils';
 import { Context, IContextParams } from './utils/context';
-import { WsClient } from './websockets/client';
+import { WsClient } from './websockets/websocket.client';
 
 /**
  * The node client for communicating with external api.
  * Do not instantiate the client directly using this class.
- * Instead use the `createClient` factory function.
+ * Instead use the [[`createClient`]] factory function.
  * ```ts
- * const client: Client = createClient({ ... });
+ * const client: Client = createClient({
+ *    apiUrl: process.env.API_URL,
+ *    wsUrl: process.env.WS_URL
+ * });
  * ```
+ * @category client
  */
 @Service()
 export class Client {
@@ -90,6 +96,9 @@ export class Client {
 /**
  * The factory function to create a client for the context.
  * All the services will be initialized for the given context.
+ * @param params The client parameters
+ * @param [context] an optional named context if you need to use multiple clients and contexts.
+ * @category Entry point
  */
 export function createClient(params: IContextParams, context = 'default') {
   Container.of(context).set(Context, new Context(params));

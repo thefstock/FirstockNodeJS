@@ -26,6 +26,7 @@ import endpoints from './users.endpoints';
 
 /**
  * The data source service for users module.
+ * @category Data Sources
  */
 @Service()
 export class UsersService extends DataSource {

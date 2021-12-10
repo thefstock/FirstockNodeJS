@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for get unsettled trading date
+ * @category Models
  */
 export class GetUnsettledTradingDateRequestModel {
   /**
@@ -26,6 +23,7 @@ export class GetUnsettledTradingDateRequestModel {
 
 /**
  * The response model for get unsettled trading date
+ * @category Models
  */
 export class GetUnsettledTradingDateResponseModel {
   /**

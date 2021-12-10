@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for limits
+ * @category Models
  */
 export class LimitsRequestModel {
   /**
@@ -48,6 +45,7 @@ export class LimitsRequestModel {
 
 /**
  * The response model for limits
+ * @category Models
  */
 export class LimitsResponseModel {
   /**

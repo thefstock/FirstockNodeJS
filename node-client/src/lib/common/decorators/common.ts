@@ -4,11 +4,13 @@
 import { Transform, TransformationType, TransformFnParams } from "class-transformer";
 
 /**
+ * @internal
  * The type of encoder function
  */
 type TransformerFn<TOutput> = (params: TransformFnParams) => TOutput;
 
 /**
+ * @internal
  * compose multiple property decorators together
  * @param decorators The decorators to compose
  * @param [reverse] Whether to compose from last to first (This is the default behaviour).
@@ -24,6 +26,7 @@ export function Compose(decorators: PropertyDecorator[], reverse = true): Proper
 }
 
 /**
+ * @internal
  * Assign an encoder to the property.
  * Encoders define how a property is transformed when converted to plain object or json.
  * @param transformer The function to transform the value
@@ -34,6 +37,7 @@ export function Encode<TOutput>(transformer: TransformerFn<TOutput>) {
 }
 
 /**
+ * @internal
  * Assign a decoder to the property.
  * Decoders define how a property is transformed when parsing a plain object or json.
  * @param transformer The function to transform the value
@@ -44,6 +48,7 @@ export function Decode<TOutput>(transformer: TransformerFn<TOutput>) {
 }
 
 /**
+ * @internal
  * The interface for the options passed to a Field decorator
  */
 export interface IFieldTransformOption<TEncoded, TDecoded> {
@@ -58,6 +63,7 @@ export interface IFieldTransformOption<TEncoded, TDecoded> {
 };
 
 /**
+ * @internal
  * Assign the property as a field.
  * The `Field` decorator will run transformation of both encoder and decoder
  * @param options The field transformation options

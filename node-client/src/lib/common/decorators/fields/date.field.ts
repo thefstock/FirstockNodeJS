@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Field } from "../common";
 
 /**
+ * @internal
  * The options for the date field
  */
 export interface IDateFieldOptions {
@@ -14,6 +15,7 @@ export interface IDateFieldOptions {
 }
 
 /**
+ * @internal
  * The date field decorator
  * @param [options] The date field options (Optional).
  * @returns a property decorator

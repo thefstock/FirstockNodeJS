@@ -14,6 +14,7 @@ import {
 
 /**
  * The data source service for funds module.
+ * @category Data Sources
  */
 @Service()
 export class FundsService extends DataSource {

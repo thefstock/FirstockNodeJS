@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for get index list
+ * @category Models
  */
 export class GetIndexListRequestModel {
   /**
@@ -31,6 +28,7 @@ export class GetIndexListRequestModel {
 
 /**
  * The response model for get index list
+ * @category Models
  */
 export class GetIndexListResponseModel {
   /**

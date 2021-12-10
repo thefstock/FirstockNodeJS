@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsEmail, IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for user details
+ * @category Models
  */
 export class UserDetailsRequestModel {
   /**
@@ -26,6 +23,7 @@ export class UserDetailsRequestModel {
 
 /**
  * The response model for user details
+ * @category Models
  */
 export class UserDetailsResponseModel {
   /**

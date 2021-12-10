@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -13,6 +9,7 @@ import {
 
 /**
  * The request model for forgot password
+ * @category Models
  */
 export class ForgotPasswordRequestModel {
   /**
@@ -34,6 +31,7 @@ export class ForgotPasswordRequestModel {
 
 /**
  * The response model for forgot password
+ * @category Models
  */
 export class ForgotPasswordResponseModel {
   /**

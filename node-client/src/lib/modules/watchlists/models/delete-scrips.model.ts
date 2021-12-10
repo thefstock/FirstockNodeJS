@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for delete scrips
+ * @category Models
  */
 export class DeleteScripsRequestModel {
   /**
@@ -36,6 +33,7 @@ export class DeleteScripsRequestModel {
 
 /**
  * The response model for delete scrips
+ * @category Models
  */
 export class DeleteScripsResponseModel {
   /**

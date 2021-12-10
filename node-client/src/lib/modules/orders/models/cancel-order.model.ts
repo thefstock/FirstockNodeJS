@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -13,6 +9,7 @@ import {
 
 /**
  * The request model for cancel order
+ * @category Models
  */
 export class CancelOrderRequestModel {
   /**
@@ -29,6 +26,7 @@ export class CancelOrderRequestModel {
 
 /**
  * The response model for cancel order
+ * @category Models
  */
 export class CancelOrderResponseModel {
   /**

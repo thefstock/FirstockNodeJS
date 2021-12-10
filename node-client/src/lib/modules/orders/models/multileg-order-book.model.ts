@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -16,6 +12,7 @@ import {
 
 /**
  * The request model for multileg order book
+ * @category Models
  */
 export class MultilegOrderBookRequestModel {
   /**
@@ -33,6 +30,7 @@ export class MultilegOrderBookRequestModel {
 
 /**
  * The response model for multileg order book
+ * @category Models
  */
 export class MultilegOrderBookResponseModel {
   /**

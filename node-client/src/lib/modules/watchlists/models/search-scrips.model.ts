@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for search scrips
+ * @category Models
  */
 export class SearchScripsRequestModel {
   /**
@@ -37,6 +34,7 @@ export class SearchScripsRequestModel {
 
 /**
  * The response model for search scrips
+ * @category Models
  */
 export class SearchScripsResponseModel {
   /**

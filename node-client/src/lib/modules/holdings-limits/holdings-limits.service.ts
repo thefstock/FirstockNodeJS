@@ -12,6 +12,7 @@ import {
 
 /**
  * The data source service for holdings limits module.
+ * @category Data Sources
  */
 @Service()
 export class HoldingsLimitsService extends DataSource {

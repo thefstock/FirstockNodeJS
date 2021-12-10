@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -13,6 +9,7 @@ import {
 
 /**
  * The request model for save fcm token
+ * @category Models
  */
 export class SaveFcmTokenRequestModel {
   /**
@@ -29,6 +26,7 @@ export class SaveFcmTokenRequestModel {
 
 /**
  * The response model for save fcm token
+ * @category Models
  */
 export class SaveFcmTokenResponseModel {
   /**

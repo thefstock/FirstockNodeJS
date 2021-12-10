@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -16,6 +12,7 @@ import {
 
 /**
  * The request model for order book
+ * @category Models
  */
 export class OrderBookRequestModel {
   /**
@@ -33,6 +30,7 @@ export class OrderBookRequestModel {
 
 /**
  * The response model for order book
+ * @category Models
  */
 export class OrderBookResponseModel {
   /**

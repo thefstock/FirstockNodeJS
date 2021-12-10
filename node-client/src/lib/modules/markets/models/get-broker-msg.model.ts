@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -13,6 +9,7 @@ import {
 
 /**
  * The request model for get broker msg
+ * @category Models
  */
 export class GetBrokerMsgRequestModel {
   /**
@@ -24,6 +21,7 @@ export class GetBrokerMsgRequestModel {
 
 /**
  * The response model for get broker msg
+ * @category Models
  */
 export class GetBrokerMsgResponseModel {
   /**

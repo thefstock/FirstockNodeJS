@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -13,6 +9,7 @@ import {
 
 /**
  * The request model for exch msg
+ * @category Models
  */
 export class ExchMsgRequestModel {
   /**
@@ -30,6 +27,7 @@ export class ExchMsgRequestModel {
 
 /**
  * The response model for exch msg
+ * @category Models
  */
 export class ExchMsgResponseModel {
   /**

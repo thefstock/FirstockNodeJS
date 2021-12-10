@@ -26,6 +26,7 @@ import endpoints from './watchlists.endpoints';
 
 /**
  * The data source service for watchlists module.
+ * @category Data Sources
  */
 @Service()
 export class WatchlistsService extends DataSource {

@@ -1,8 +1,7 @@
 /**
- * @module
+ * @internal
  * The endpoints for markets module
  *  */
-
 const endpoints = {
   GET_INDEX_LIST: 'GetIndexList',
   TOP_LIST_NAMES: 'TopListName',

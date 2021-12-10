@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -16,6 +12,7 @@ import {
 
 /**
  * The request model for modify gtt order
+ * @category Models
  */
 export class ModifyGttOrderRequestModel {
   /**
@@ -98,6 +95,7 @@ export class ModifyGttOrderRequestModel {
 
 /**
  * The response model for modify gtt order
+ * @category Models
  */
 export class ModifyGttOrderResponseModel {
   /**

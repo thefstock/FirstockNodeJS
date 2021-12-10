@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -75,6 +71,7 @@ export class SpanCalculatorPos {
 
 /**
  * The request model for span calc
+ * @category Models
  */
 export class SpanCalcRequestModel {
   /**
@@ -91,6 +88,7 @@ export class SpanCalcRequestModel {
 
 /**
  * The response model for span calc
+ * @category Models
  */
 export class SpanCalcResponseModel {
   /**

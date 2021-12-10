@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -15,6 +11,7 @@ import {
 
 /**
  * The request model for top list names
+ * @category Models
  */
 export class TopListNamesRequestModel {
   /**
@@ -31,6 +28,7 @@ export class TopListNamesRequestModel {
 
 /**
  * The response model for top list names
+ * @category Models
  */
 export class TopListNamesResponseModel {
   /**

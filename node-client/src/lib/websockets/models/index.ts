@@ -1,5 +1,4 @@
 /**
- * @module
  * common models used across the project
  *  */
 
@@ -15,6 +14,7 @@ import {
 
 /**
  * The websocket connection model model
+ * @category Models
  */
 export class WebsocketConnectionModel {
   /**
@@ -47,6 +47,7 @@ export class WebsocketConnectionModel {
 
 /**
  * The depth subscribe model model
+ * @category Models
  */
 export class DepthSubscribeModel {
   /**
@@ -64,6 +65,7 @@ export class DepthSubscribeModel {
 
 /**
  * The depth unsubscribe model model
+ * @category Models
  */
 export class DepthUnsubscribeModel {
   /**
@@ -81,6 +83,7 @@ export class DepthUnsubscribeModel {
 
 /**
  * The order subscribe model model
+ * @category Models
  */
 export class OrderSubscribeModel {
   /**
@@ -97,6 +100,7 @@ export class OrderSubscribeModel {
 
 /**
  * The order unsubscribe model model
+ * @category Models
  */
 export class OrderUnsubscribeModel {
   /**
@@ -108,6 +112,7 @@ export class OrderUnsubscribeModel {
 
 /**
  * The touchline subscribe model model
+ * @category Models
  */
 export class TouchlineSubscribeModel {
   /**
@@ -125,6 +130,7 @@ export class TouchlineSubscribeModel {
 
 /**
  * The touchline unsubscribe model model
+ * @category Models
  */
 export class TouchlineUnsubscribeModel {
   /**

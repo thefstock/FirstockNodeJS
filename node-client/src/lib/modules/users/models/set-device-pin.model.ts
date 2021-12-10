@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for set device pin
+ * @category Models
  */
 export class SetDevicePinRequestModel {
   /**
@@ -40,6 +37,7 @@ export class SetDevicePinRequestModel {
 
 /**
  * The response model for set device pin
+ * @category Models
  */
 export class SetDevicePinResponseModel {
   /**

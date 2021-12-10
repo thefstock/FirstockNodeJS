@@ -1,8 +1,7 @@
 /**
- * @module
+ * @internal
  * The endpoints for funds module
  *  */
-
 const endpoints = {
   GET_MAX_PAYOUT_AMOUNT: 'GetMaxPayoutAmount',
   GET_CONTENT_BASKET: 'GetContentBasket',

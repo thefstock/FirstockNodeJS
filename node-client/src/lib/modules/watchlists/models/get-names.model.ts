@@ -1,5 +1,5 @@
 /**
- * @module
+ * 
  * common models used across the project
  *  */
 

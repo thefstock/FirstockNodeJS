@@ -32,6 +32,7 @@ import endpoints from './orders.endpoints';
 
 /**
  * The data source service for orders module.
+ * @category Data Sources
  */
 @Service()
 export class OrdersService extends DataSource {

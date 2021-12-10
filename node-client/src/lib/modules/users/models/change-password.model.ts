@@ -1,7 +1,3 @@
-/**
- * @module
- * The request and response models for
- *  */
 import { IsOptional } from 'class-validator';
 
 import {
@@ -14,6 +10,7 @@ import {
 
 /**
  * The request model for change password
+ * @category Models
  */
 export class ChangePasswordRequestModel {
   /**
@@ -36,6 +33,7 @@ export class ChangePasswordRequestModel {
 
 /**
  * The response model for change password
+ * @category Models
  */
 export class ChangePasswordResponseModel {
   /**
