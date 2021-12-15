@@ -14,9 +14,9 @@ import {
 } from '../';
 
 /**
- * The alert type model model
+ * The alert type wrapper class
  */
-export class AlertTypeModel {
+export class AlertTypeWrapper {
   /**
    * Alert type
    */

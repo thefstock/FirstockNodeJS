@@ -1,0 +1,256 @@
+<!DOCTYPE html><html class="default"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>@f-py/node-client</title><meta name="description" content="Documentation for @f-py/node-client"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><link rel="stylesheet" href="assets/custom.css"/><script async src="assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">@f-py/node-client</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><h1>@f-py/node-client</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><div class="tsd-panel tsd-typography">
+<a href="#f-pynode-client" id="f-pynode-client" style="color: inherit; text-decoration: none;">
+  <h1>@f-py/node-client</h1>
+</a>
+<p>The <code>node-client</code> library abstracts away the REST communication logic by exposing a set of classes and
+methods to effectively execute the tasks.</p>
+<p>Library exposes a <a href="modules.html#createClient"><code>createClient</code></a> factory function to generate a <a href="classes/Client.html"><code>Client</code></a> instance inside a context.
+The <a href="classes/Client.html"><code>Client</code></a> instance abstracts the underlying logic by providing methods and submodules to communicate with the server.</p>
+
+<a href="#usage-with-typescript" id="usage-with-typescript" style="color: inherit; text-decoration: none;">
+  <h4>Usage with typescript</h4>
+</a>
+<pre><code class="language-ts"><span class="hl-0">// typescript</span><br/><span class="hl-1">import</span><span class="hl-2"> { </span><span class="hl-3">Client</span><span class="hl-2">, </span><span class="hl-3">createClient</span><span class="hl-2">, </span><span class="hl-3">models</span><span class="hl-2">, </span><span class="hl-3">enums</span><span class="hl-2"> } </span><span class="hl-1">from</span><span class="hl-2"> </span><span class="hl-4">&#39;@f-py/node-client&#39;</span><span class="hl-2">;</span><br/><br/><span class="hl-5">const</span><span class="hl-2"> { </span><span class="hl-6">LoginResponseModel</span><span class="hl-2"> } = </span><span class="hl-3">models</span><span class="hl-2">;</span><br/><span class="hl-5">const</span><span class="hl-2"> { </span><span class="hl-6">ResponseStatus</span><span class="hl-2"> } = </span><span class="hl-3">enums</span><span class="hl-2">;</span><br/><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">client</span><span class="hl-2">: </span><span class="hl-7">Client</span><span class="hl-2"> = </span><span class="hl-8">createClient</span><span class="hl-2">({ </span><span class="hl-3">apiUrl:</span><span class="hl-2"> </span><span class="hl-6">API_URL</span><span class="hl-2">, </span><span class="hl-3">wsUrl:</span><span class="hl-2"> </span><span class="hl-6">WS_URL</span><span class="hl-2"> });</span><br/><br/><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">main</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-1">try</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">response</span><span class="hl-2">: </span><span class="hl-7">LoginResponseModel</span><span class="hl-2"> = </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-8">login</span><span class="hl-2">({ ... });</span><br/><span class="hl-2">    </span><span class="hl-1">if</span><span class="hl-2"> (</span><span class="hl-3">response</span><span class="hl-2">.</span><span class="hl-3">stat</span><span class="hl-2"> === </span><span class="hl-3">ResponseStatus</span><span class="hl-2">.</span><span class="hl-6">OK</span><span class="hl-2">) {</span><br/><span class="hl-2">      </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-4">&#39;Successful&#39;</span><span class="hl-2">);</span><br/><span class="hl-2">      </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-4">`token: </span><span class="hl-5">${</span><span class="hl-3">response</span><span class="hl-9">.</span><span class="hl-3">susertoken</span><span class="hl-5">}</span><span class="hl-4">`</span><span class="hl-2">)</span><br/><span class="hl-2">    } </span><span class="hl-1">else</span><span class="hl-2"> {</span><br/><span class="hl-2">      </span><span class="hl-1">throw</span><span class="hl-2"> </span><span class="hl-5">new</span><span class="hl-2"> </span><span class="hl-7">Error</span><span class="hl-2">(</span><span class="hl-3">response</span><span class="hl-2">.</span><span class="hl-3">emsg</span><span class="hl-2"> ?? </span><span class="hl-4">&#39;Login Failed&#39;</span><span class="hl-2">);</span><br/><span class="hl-2">    }</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">catch</span><span class="hl-2"> (</span><span class="hl-3">error</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">error</span><span class="hl-2">(</span><span class="hl-3">error</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span><br/><br/><span class="hl-8">main</span><span class="hl-2">();</span>
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>
+Just remove the type references when using with ES6.</p>
+</blockquote>
+
+<a href="#getting-started" id="getting-started" style="color: inherit; text-decoration: none;">
+  <h2>Getting Started</h2>
+</a>
+
+<a href="#client" id="client" style="color: inherit; text-decoration: none;">
+  <h3>Client</h3>
+</a>
+<p>The client is the main access point for all operations in every module.
+The client syncs the state between all the modules to use a shared application state.</p>
+
+<a href="#initialize-the-client" id="initialize-the-client" style="color: inherit; text-decoration: none;">
+  <h4>Initialize the Client.</h4>
+</a>
+<p>Create a client instance using the <a href="modules.html#createClient"><code>createClient</code></a> factory function.</p>
+<pre><code class="language-ts"><span class="hl-1">import</span><span class="hl-2"> { </span><span class="hl-3">Client</span><span class="hl-2">, </span><span class="hl-3">createClient</span><span class="hl-2"> } </span><span class="hl-1">from</span><span class="hl-2"> </span><span class="hl-4">&#39;@f-py/node-client&#39;</span><span class="hl-2">;</span><br/><br/><span class="hl-0">// We assume that the api url and web socket url comes from env.</span><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">apiUrl</span><span class="hl-2"> = </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">API_URL</span><span class="hl-2">;</span><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">wsUrl</span><span class="hl-2"> = </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">WS_URL</span><span class="hl-2">;</span><br/><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">client</span><span class="hl-2"> = </span><span class="hl-8">createClient</span><span class="hl-2">({ </span><span class="hl-3">apiUrl</span><span class="hl-2">, </span><span class="hl-3">wsUrl</span><span class="hl-2"> });</span><br/><br/><span class="hl-0">// OR you can create multiple clients for different contexts</span><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">client1</span><span class="hl-2"> = </span><span class="hl-8">createClient</span><span class="hl-2">({ </span><span class="hl-3">apiUrl</span><span class="hl-2">, </span><span class="hl-3">wsUrl</span><span class="hl-2"> }, </span><span class="hl-4">&quot;context 1&quot;</span><span class="hl-2">);</span><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">client2</span><span class="hl-2"> = </span><span class="hl-8">createClient</span><span class="hl-2">({ </span><span class="hl-3">apiUrl</span><span class="hl-2">, </span><span class="hl-3">wsUrl</span><span class="hl-2"> }, </span><span class="hl-4">&quot;context 2&quot;</span><span class="hl-2">);</span>
+</code></pre>
+<blockquote>
+<p><strong>Note</strong></p>
+<ul>
+<li>If you give duplicate names for the <code>context</code> parameter, it will affect both clients.</li>
+<li>Clients in the same context share service instances and state.</li>
+<li>Whenever a new client is created for the same context, it will reset the state of the context.</li>
+<li>If no context is provided, it uses the <code>&quot;default&quot;</code> context.</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>The <code>wsUrl</code> is used to make websocket connections to the server.</p>
+</blockquote>
+
+<a href="#login-user" id="login-user" style="color: inherit; text-decoration: none;">
+  <h4>Login user</h4>
+</a>
+<p>Since most of the methods requires the user to login. First you should login user with the <a href="classes/Client.html#login"><code>login</code></a> method of client.</p>
+<pre><code class="language-ts"><span class="hl-1">import</span><span class="hl-2"> { </span><span class="hl-3">Client</span><span class="hl-2">, </span><span class="hl-3">createClient</span><span class="hl-2">, </span><span class="hl-3">enums</span><span class="hl-2">, </span><span class="hl-3">models</span><span class="hl-2"> } </span><span class="hl-1">from</span><span class="hl-2"> </span><span class="hl-4">&#39;@f-py/node-client&#39;</span><span class="hl-2">;</span><br/><span class="hl-0">// ... any other imports</span><br/><span class="hl-5">const</span><span class="hl-2"> { </span><span class="hl-6">LoginResponseModel</span><span class="hl-2"> } = </span><span class="hl-3">models</span><span class="hl-2">;</span><br/><span class="hl-5">const</span><span class="hl-2"> { </span><span class="hl-6">RequestSourceType</span><span class="hl-2">, </span><span class="hl-6">ResponseStatus</span><span class="hl-2"> } = </span><span class="hl-3">enums</span><span class="hl-2">;</span><br/><br/><span class="hl-0">// ... steps to create the client instance</span><br/><br/><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">login</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">response</span><span class="hl-2">: </span><span class="hl-7">LoginResponseModel</span><span class="hl-2"> = </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-8">login</span><span class="hl-2">({</span><br/><span class="hl-2">    </span><span class="hl-3">apkversion:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">APK_VERSION</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-3">appkey:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">APP_KEY</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-3">vc:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">VC</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-3">uid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">UID</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-3">pwd:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">PASSWORD</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-3">factor2:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">FACTOR2</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-3">imei:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">IMEI</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-3">source:</span><span class="hl-2"> </span><span class="hl-3">RequestSourceType</span><span class="hl-2">.</span><span class="hl-6">API</span><br/><span class="hl-2">  });</span><br/><br/><span class="hl-2">  </span><span class="hl-1">if</span><span class="hl-2"> (</span><span class="hl-3">response</span><span class="hl-2">.</span><span class="hl-3">stat</span><span class="hl-2"> == </span><span class="hl-3">ResponseStatus</span><span class="hl-2">.</span><span class="hl-6">OK</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-1">return</span><span class="hl-2"> </span><span class="hl-3">response</span><span class="hl-2">;</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">else</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">throw</span><span class="hl-2"> </span><span class="hl-5">new</span><span class="hl-2"> </span><span class="hl-7">Error</span><span class="hl-2">(</span><span class="hl-3">response</span><span class="hl-2">.</span><span class="hl-3">emsg</span><span class="hl-2"> ?? </span><span class="hl-4">&#39;Login Failed&#39;</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span><br/><br/><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">main</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-1">try</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">response</span><span class="hl-2">: </span><span class="hl-7">LoginResponseModel</span><span class="hl-2"> = </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-8">login</span><span class="hl-2">();</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-4">&#39;Login Successful&#39;</span><span class="hl-2">)</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">catch</span><span class="hl-2"> (</span><span class="hl-3">error</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">error</span><span class="hl-2">(</span><span class="hl-3">error</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span><br/><br/><span class="hl-8">main</span><span class="hl-2">();</span>
+</code></pre>
+<blockquote>
+<ul>
+<li>The client&#39;s internal data-source services does a minimum level of validation and transformation to send proper data in proper format required by the server.</li>
+</ul>
+</blockquote>
+
+<a href="#sending-request-for-protected-content" id="sending-request-for-protected-content" style="color: inherit; text-decoration: none;">
+  <h4>Sending Request for protected content</h4>
+</a>
+<p>After logging in, now we are able to request contents that requires authentication.
+These APIs requires to provide the <code>susertoken</code> received from successful login.</p>
+<p>The client internally stores this token to the current context state and reuse it to send requests to protected content.</p>
+<p>Request for user details after client login:</p>
+<pre><code class="language-ts"><span class="hl-0">// ... imports</span><br/><br/><span class="hl-5">const</span><span class="hl-2"> { </span><span class="hl-6">LoginResponseModel</span><span class="hl-2">, </span><span class="hl-6">UserDetailsResponseModel</span><span class="hl-2"> } = </span><span class="hl-3">models</span><span class="hl-2">;</span><br/><span class="hl-0">// ... other variable assignments</span><br/><br/><span class="hl-0">// ... creating client instance</span><br/><br/><span class="hl-3">async</span><span class="hl-2"> </span><span class="hl-8">login</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-0">// ... login method</span><br/><span class="hl-2">}</span><br/><br/><span class="hl-3">async</span><span class="hl-2"> </span><span class="hl-8">getUserDetails</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">response</span><span class="hl-2">: </span><span class="hl-7">UserDetailsResponseModel</span><span class="hl-2"> = </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-3">users</span><span class="hl-2">.</span><span class="hl-8">userDetails</span><span class="hl-2">({</span><br/><span class="hl-2">    </span><span class="hl-3">uid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">UID</span><br/><span class="hl-2">  });</span><br/><span class="hl-2">  </span><span class="hl-1">if</span><span class="hl-2"> (</span><span class="hl-3">response</span><span class="hl-2">.</span><span class="hl-3">stat</span><span class="hl-2"> === </span><span class="hl-3">ResponseStatus</span><span class="hl-2">.</span><span class="hl-6">OK</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-1">return</span><span class="hl-2"> </span><span class="hl-3">response</span><span class="hl-2">;</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">else</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">throw</span><span class="hl-2"> </span><span class="hl-5">new</span><span class="hl-2"> </span><span class="hl-7">Error</span><span class="hl-2">(</span><span class="hl-3">response</span><span class="hl-2">.</span><span class="hl-3">emsg</span><span class="hl-2"> ?? </span><span class="hl-4">&#39;Could not fetch details&#39;</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span><br/><br/><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">main</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-1">try</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-8">login</span><span class="hl-2">();</span><br/><span class="hl-2">    </span><span class="hl-0">// send request for user details</span><br/><span class="hl-2">    </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">details</span><span class="hl-2">: </span><span class="hl-7">UserDetailsResponseModel</span><span class="hl-2"> = </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-8">getUserDetails</span><span class="hl-2">();</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-4">&#39;User Details:&#39;</span><span class="hl-2">);</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-3">details</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">catch</span><span class="hl-2">(</span><span class="hl-3">error</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">error</span><span class="hl-2">(</span><span class="hl-3">error</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span><br/><br/><span class="hl-8">main</span><span class="hl-2">();</span>
+</code></pre>
+
+<a href="#logout" id="logout" style="color: inherit; text-decoration: none;">
+  <h4>Logout</h4>
+</a>
+<p>To log a user out, use the <a href="classes/Client.html#logout"><code>logout</code></a> method of client.
+This sends a logout request to the server and also clears the session token from context state.</p>
+<pre><code class="language-ts"><span class="hl-0">// ...</span><br/><span class="hl-5">const</span><span class="hl-2"> { ..., </span><span class="hl-6">LogoutResponseModel</span><span class="hl-2"> } = </span><span class="hl-3">models</span><span class="hl-2">;</span><br/><span class="hl-0">// ...</span><br/><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">logout</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">response</span><span class="hl-2">: </span><span class="hl-7">LogoutResponseModel</span><span class="hl-2"> = </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-8">logout</span><span class="hl-2">(</span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">UID</span><span class="hl-2">);</span><br/><span class="hl-2">  </span><span class="hl-0">// OR</span><br/><span class="hl-2">  </span><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">response</span><span class="hl-2">: </span><span class="hl-7">LogoutResponseModel</span><span class="hl-2"> = </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-8">logout</span><span class="hl-2">({</span><br/><span class="hl-2">    </span><span class="hl-3">uid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-6">UID</span><br/><span class="hl-2">  });</span><br/><span class="hl-2">  </span><span class="hl-1">if</span><span class="hl-2"> (</span><span class="hl-3">response</span><span class="hl-2">.</span><span class="hl-3">stat</span><span class="hl-2"> === </span><span class="hl-3">ResponseStatus</span><span class="hl-2">.</span><span class="hl-6">OK</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-1">return</span><span class="hl-2"> </span><span class="hl-3">response</span><span class="hl-2">;</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">else</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">throw</span><span class="hl-2"> </span><span class="hl-5">new</span><span class="hl-2"> </span><span class="hl-7">Error</span><span class="hl-2">(</span><span class="hl-3">response</span><span class="hl-2">.</span><span class="hl-3">emsg</span><span class="hl-2"> ?? </span><span class="hl-4">&#39;Failed to logout user&#39;</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span><br/><span class="hl-0">// ...</span><br/><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">main</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-1">try</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-0">// ... login user</span><br/><span class="hl-2">    </span><span class="hl-0">// ...</span><br/><span class="hl-2">    </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-8">logout</span><span class="hl-2">();</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-4">&#39;Successfully logged out&#39;</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">catch</span><span class="hl-2"> (</span><span class="hl-3">error</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">error</span><span class="hl-2">(</span><span class="hl-3">error</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span>
+</code></pre>
+
+<a href="#modules--data-sources--services" id="modules--data-sources--services" style="color: inherit; text-decoration: none;">
+  <h4>Modules / Data Sources / Services</h4>
+</a>
+<p>The client comprises of data-sources/modules/services to group the available methods.
+All the available services can be accessed from client by the corresponding property:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Service</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>alerts</td>
+<td><a href="classes/alerts.AlertsService.html">alerts.AlertsService</a></td>
+</tr>
+<tr>
+<td>funds</td>
+<td><a href="classes/funds.FundsService.html">funds.FundsService</a></td>
+</tr>
+<tr>
+<td>markets</td>
+<td><a href="classes/markets.MarketsService.html">markets.MarketsService</a></td>
+</tr>
+<tr>
+<td>orders</td>
+<td><a href="classes/orders.OrdersService.html">orders.OrdersService</a></td>
+</tr>
+<tr>
+<td>users</td>
+<td><a href="classes/users.UsersService.html">users.UsersService</a></td>
+</tr>
+<tr>
+<td>watchlists</td>
+<td><a href="classes/watchlists.WatchlistsService.html">watchlists.WatchlistsService</a></td>
+</tr>
+</tbody></table>
+<p><strong>Example:</strong></p>
+<p>To access the <a href="classes/markets.MarketsService.html#getIndexList"><code>getIndexList</code></a> method of <a href="classes/markets.MarketsService.html"><code>MarketsService</code></a>, we can use:</p>
+<pre><code class="language-ts"><span class="hl-3">indexes</span><span class="hl-2"> = </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-3">markets</span><span class="hl-2">.</span><span class="hl-8">getIndexList</span><span class="hl-2">(...)</span>
+</code></pre>
+
+<a href="#websockets" id="websockets" style="color: inherit; text-decoration: none;">
+  <h3>Websockets</h3>
+</a>
+<p>The master client also manages a <a href="classes/ws.WsClient.html">websocket client</a> to handle websocket requests.
+The master client shares its state with the websocket client.
+The websocket connection is not explicitly made by the client.
+This is to avoid making unnecessary connections where websocket operations might not be required.</p>
+<p>The websocket client is decoupled from the master client but is kept as part of the master client to abstract the state management.</p>
+<p>To start using websockets,
+first we need to <a href="#initialize-the-client">initialize the client</a> and complete a <a href="#login-user">login</a> request.</p>
+
+<a href="#creating-the-connection" id="creating-the-connection" style="color: inherit; text-decoration: none;">
+  <h4>Creating the connection</h4>
+</a>
+<pre><code class="language-ts"><span class="hl-0">//... imports</span><br/><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">ws</span><span class="hl-2"> = </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-3">ws</span><span class="hl-2">;</span><br/><br/><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">main</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-0">// ... initialize client</span><br/><span class="hl-2">  </span><span class="hl-0">// ... login</span><br/><br/><span class="hl-2">  </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-8">connect</span><span class="hl-2">({</span><br/><span class="hl-2">    </span><span class="hl-3">uid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-3">uid</span><span class="hl-2">,</span><br/><span class="hl-2">    </span><span class="hl-3">actid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-3">actid</span><br/><span class="hl-2">  });</span><br/><span class="hl-2">}</span>
+</code></pre>
+
+<a href="#subscribing-amp-unsubscribing" id="subscribing-amp-unsubscribing" style="color: inherit; text-decoration: none;">
+  <h4>Subscribing &amp; Unsubscribing</h4>
+</a>
+<p>The websocket client can be used to subscribe to multiple topics.
+Once subscribed, the client receives the updates from these topics as feeds.
+When you no longer requires updates from a topic, you can also unsubscribe from these topics.</p>
+<p>The websocket client exposes methods to subscribe and unsubscribe for the following topics:</p>
+<ul>
+<li>Touchline<ul>
+<li><a href="classes/ws.WsClient.html#subscribeTouchline"><code>subscribeTouchline</code></a></li>
+<li><a href="classes/ws.WsClient.html#unsubscribeTouchline"><code>unsubscribeTouchline</code></a></li>
+</ul>
+</li>
+<li>Depth<ul>
+<li><a href="classes/ws.WsClient.html#subscribeDepth"><code>subscribeDepth</code></a></li>
+<li><a href="classes/ws.WsClient.html#unsubscribeDepth"><code>unsubscribeDepth</code></a></li>
+</ul>
+</li>
+<li>Order update<ul>
+<li><a href="classes/ws.WsClient.html#subscribeOrder"><code>subscribeOrder</code></a></li>
+<li><a href="classes/ws.WsClient.html#unsubscribeOrder"><code>unsubscribeOrder</code></a></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-ts"><span class="hl-0">//... imports</span><br/><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">ws</span><span class="hl-2"> = </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-3">ws</span><span class="hl-2">;</span><br/><br/><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">main</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-0">// ... initialize client</span><br/><span class="hl-2">  </span><span class="hl-0">// ... login</span><br/><br/><span class="hl-2">  </span><span class="hl-1">try</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-8">connect</span><span class="hl-2">({</span><br/><span class="hl-2">      </span><span class="hl-3">uid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-3">uid</span><span class="hl-2">,</span><br/><span class="hl-2">      </span><span class="hl-3">actid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-3">actid</span><br/><span class="hl-2">    });</span><br/><span class="hl-2">    </span><span class="hl-0">// subscribe to touchline</span><br/><span class="hl-2">    </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-8">subscribeTouchline</span><span class="hl-2">({</span><br/><span class="hl-2">      </span><span class="hl-3">k:</span><span class="hl-2"> [</span><span class="hl-4">&#39;NSE&#39;</span><span class="hl-2">,</span><span class="hl-4">&#39;NIFTY&#39;</span><span class="hl-2">]</span><br/><span class="hl-2">    });</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">catch</span><span class="hl-2"> (</span><span class="hl-3">error</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">error</span><span class="hl-2">(</span><span class="hl-3">error</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span>
+</code></pre>
+<blockquote>
+<p><strong>Note</strong>: The subscriptions are always done after the connection is made to avoid packet loss.</p>
+</blockquote>
+
+<a href="#listening-to-messages-from-topics" id="listening-to-messages-from-topics" style="color: inherit; text-decoration: none;">
+  <h4>Listening to messages from topics</h4>
+</a>
+<p>We were able to subscribe to a topic but how to handle the incoming messages.
+Every message from the server is emitted as <a href="https://rxjs.dev/">rxjs</a> observables from the client.</p>
+<p>The [[websocket client | ws.WsClient]] exposes these observables to emit data:</p>
+<table>
+<thead>
+<tr>
+<th>property</th>
+<th>details</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="classes/ws.WsClient.html#messages_"><code>ws.WsClient.messages$</code></a></td>
+<td>Emits all the messages from the received from the server. (Including acknowledgements)</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#touchline_"><code>ws.WsClient.touchline$</code></a></td>
+<td>Emits touchline feeds</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#depth_"><code>ws.WsClient.depth$</code></a></td>
+<td>Emits depth feeds</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#order_"><code>ws.WsClient.order$</code></a></td>
+<td>Emits order update feeds</td>
+</tr>
+</tbody></table>
+<p>Once you have subscribed to the topics, you can subscribe to these observables to receive data.</p>
+<blockquote>
+<p><strong>Note:</strong> The <code>subscribe</code> &amp; <code>unsubscribe</code> in observable and <a href="classes/ws.WsClient.html"><code>WsClient</code></a> is completely different.
+subscribing to observables is a way of reactively extracting data while that in the <code>WsClient</code> is an actual request to server.</p>
+</blockquote>
+<pre><code class="language-ts"><span class="hl-0">//... imports</span><br/><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">ws</span><span class="hl-2"> = </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-3">ws</span><span class="hl-2">;</span><br/><br/><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">main</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-0">// ... initialize client</span><br/><span class="hl-2">  </span><span class="hl-0">// ... login</span><br/><br/><span class="hl-2">  </span><span class="hl-1">try</span><span class="hl-2"> {</span><br/><span class="hl-2">    </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-8">connect</span><span class="hl-2">({</span><br/><span class="hl-2">      </span><span class="hl-3">uid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-3">uid</span><span class="hl-2">,</span><br/><span class="hl-2">      </span><span class="hl-3">actid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-3">actid</span><br/><span class="hl-2">    });</span><br/><span class="hl-2">    </span><span class="hl-0">// subscribe to touchline</span><br/><span class="hl-2">    </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-8">subscribeTouchline</span><span class="hl-2">({</span><br/><span class="hl-2">      </span><span class="hl-3">k:</span><span class="hl-2"> [</span><span class="hl-4">&#39;NSE&#39;</span><span class="hl-2">,</span><span class="hl-4">&#39;NIFTY&#39;</span><span class="hl-2">]</span><br/><span class="hl-2">    });</span><br/><br/><span class="hl-2">    </span><span class="hl-0">// read data using observables</span><br/><span class="hl-2">    </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-3">touchline$</span><span class="hl-2">.</span><span class="hl-8">subscribe</span><span class="hl-2">(</span><br/><span class="hl-2">      (</span><span class="hl-3">data</span><span class="hl-2">: </span><span class="hl-7">IWebsocketMessage</span><span class="hl-2">) </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">        </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-4">&#39;Received touchline feed&#39;</span><span class="hl-2">);</span><br/><span class="hl-2">        </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-3">data</span><span class="hl-2">);</span><br/><span class="hl-2">      }</span><br/><span class="hl-2">    );</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">catch</span><span class="hl-2"> (</span><span class="hl-3">error</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">error</span><span class="hl-2">(</span><span class="hl-3">error</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span>
+</code></pre>
+
+<a href="#event-handlers" id="event-handlers" style="color: inherit; text-decoration: none;">
+  <h4>Event Handlers</h4>
+</a>
+<p>Apart from using observables to listen to data, the <a href="classes/ws.WsClient.html"><code>WsClient</code></a> also supports registering event handlers.</p>
+<p>The client exposes these functions to add and remove event handlers.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="classes/ws.WsClient.html#addOnCloseHandler"><code>ws.WsClient.addOnCloseHandler</code></a></td>
+<td>add new handler to <code>onClose</code> event</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#addOnErrorHandler"><code>ws.WsClient.addOnErrorHandler</code></a></td>
+<td>add new handler to <code>onError</code> event</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#addOnMessageHandler"><code>ws.WsClient.addOnMessageHandler</code></a></td>
+<td>add new handler to <code>onMessage</code> event</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#addOnOpenHandler"><code>ws.WsClient.addOnOpenHandler</code></a></td>
+<td>add new handler to <code>onOpen</code> event</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#removeOnCloseHandler"><code>ws.WsClient.removeOnCloseHandler</code></a></td>
+<td>remove a handler from <code>onClose</code> event</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#removeOnErrorHandler"><code>ws.WsClient.removeOnErrorHandler</code></a></td>
+<td>remove a handler from <code>onError</code> event</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#removeOnMessageHandler"><code>ws.WsClient.removeOnMessageHandler</code></a></td>
+<td>remove a handler from <code>onMessage</code> event</td>
+</tr>
+<tr>
+<td><a href="classes/ws.WsClient.html#removeOnOpenHandler"><code>ws.WsClient.removeOnOpenHandler</code></a></td>
+<td>remove a handler from <code>onOpen</code> event</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><strong>Note:</strong> These event handlers must be added before calling the <code>connect</code> method.</p>
+</blockquote>
+<pre><code class="language-ts"><span class="hl-0">//... imports</span><br/><br/><span class="hl-5">const</span><span class="hl-2"> </span><span class="hl-6">ws</span><span class="hl-2"> = </span><span class="hl-3">client</span><span class="hl-2">.</span><span class="hl-3">ws</span><span class="hl-2">;</span><br/><br/><span class="hl-5">async</span><span class="hl-2"> </span><span class="hl-5">function</span><span class="hl-2"> </span><span class="hl-8">main</span><span class="hl-2">() {</span><br/><span class="hl-2">  </span><span class="hl-0">// ... initialize client</span><br/><span class="hl-2">  </span><span class="hl-0">// ... login</span><br/><br/><span class="hl-2">  </span><span class="hl-1">try</span><span class="hl-2"> {</span><br/><br/><span class="hl-2">    </span><span class="hl-5">let</span><span class="hl-2"> </span><span class="hl-3">subscription</span><span class="hl-2">;</span><br/><span class="hl-2">    </span><span class="hl-0">// clear subscriptions on connection closed</span><br/><span class="hl-2">    </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-8">addOnCloseHandler</span><span class="hl-2">(</span><span class="hl-5">async</span><span class="hl-2"> () </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">      </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-8">subscribeTouchline</span><span class="hl-2">({</span><br/><span class="hl-2">        </span><span class="hl-3">k:</span><span class="hl-2"> [</span><span class="hl-4">&#39;NSE&#39;</span><span class="hl-2">, </span><span class="hl-4">&#39;NIFTY&#39;</span><span class="hl-2">]</span><br/><span class="hl-2">      });</span><br/><span class="hl-2">      </span><span class="hl-3">subscription</span><span class="hl-2"> &amp;&amp; </span><span class="hl-3">subscription</span><span class="hl-2">.</span><span class="hl-8">unsubscribe</span><span class="hl-2">();</span><br/><span class="hl-2">    });</span><br/><br/><span class="hl-2">    </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-8">connect</span><span class="hl-2">({</span><br/><span class="hl-2">      </span><span class="hl-3">uid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-3">uid</span><span class="hl-2">,</span><br/><span class="hl-2">      </span><span class="hl-3">actid:</span><span class="hl-2"> </span><span class="hl-3">process</span><span class="hl-2">.</span><span class="hl-3">env</span><span class="hl-2">.</span><span class="hl-3">actid</span><br/><span class="hl-2">    });</span><br/><span class="hl-2">    </span><span class="hl-0">// subscribe to touchline</span><br/><span class="hl-2">    </span><span class="hl-1">await</span><span class="hl-2"> </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-8">subscribeTouchline</span><span class="hl-2">({</span><br/><span class="hl-2">      </span><span class="hl-3">k:</span><span class="hl-2"> [</span><span class="hl-4">&#39;NSE&#39;</span><span class="hl-2">,</span><span class="hl-4">&#39;NIFTY&#39;</span><span class="hl-2">]</span><br/><span class="hl-2">    });</span><br/><br/><span class="hl-2">    </span><span class="hl-0">// read data using observables</span><br/><span class="hl-2">    </span><span class="hl-3">subscription</span><span class="hl-2"> = </span><span class="hl-3">ws</span><span class="hl-2">.</span><span class="hl-3">touchline$</span><span class="hl-2">.</span><span class="hl-8">subscribe</span><span class="hl-2">(</span><br/><span class="hl-2">      (</span><span class="hl-3">data</span><span class="hl-2">: </span><span class="hl-7">IWebsocketMessage</span><span class="hl-2">) </span><span class="hl-5">=&gt;</span><span class="hl-2"> {</span><br/><span class="hl-2">        </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-4">&#39;Received touchline feed&#39;</span><span class="hl-2">);</span><br/><span class="hl-2">        </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">log</span><span class="hl-2">(</span><span class="hl-3">data</span><span class="hl-2">);</span><br/><span class="hl-2">      }</span><br/><span class="hl-2">    );</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">  </span><span class="hl-1">catch</span><span class="hl-2"> (</span><span class="hl-3">error</span><span class="hl-2">) {</span><br/><span class="hl-2">    </span><span class="hl-3">console</span><span class="hl-2">.</span><span class="hl-8">error</span><span class="hl-2">(</span><span class="hl-3">error</span><span class="hl-2">);</span><br/><span class="hl-2">  }</span><br/><span class="hl-2">}</span>
+</code></pre>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/alerts.html">alerts</a></li><li class=" tsd-kind-namespace"><a href="modules/enums.html">enums</a></li><li class=" tsd-kind-namespace"><a href="modules/exceptions.html">exceptions</a></li><li class=" tsd-kind-namespace"><a href="modules/funds.html">funds</a></li><li class=" tsd-kind-namespace"><a href="modules/holdings_limits.html">holdings_<wbr/>limits</a></li><li class=" tsd-kind-namespace"><a href="modules/markets.html">markets</a></li><li class=" tsd-kind-namespace"><a href="modules/models.html">models</a></li><li class=" tsd-kind-namespace"><a href="modules/orders.html">orders</a></li><li class=" tsd-kind-namespace"><a href="modules/users.html">users</a></li><li class=" tsd-kind-namespace"><a href="modules/watchlists.html">watchlists</a></li><li class=" tsd-kind-namespace"><a href="modules/ws.html">ws</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-class"><a href="classes/Client.html" class="tsd-kind-icon">Client</a></li><li class="tsd-kind-class"><a href="classes/Context.html" class="tsd-kind-icon">Context</a></li><li class="tsd-kind-interface"><a href="interfaces/IContextParams.html" class="tsd-kind-icon">IContext<wbr/>Params</a></li><li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#PlainObject" class="tsd-kind-icon">Plain<wbr/>Object</a></li><li class="tsd-kind-function"><a href="modules.html#createClient" class="tsd-kind-icon">create<wbr/>Client</a></li></ul></nav></div></div></div><footer class=""><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="overlay"></div><script src="assets/main.js"></script></body></html>

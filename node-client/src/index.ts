@@ -1,7 +1,8 @@
 /**
  * The node client library.
- * #### Usage
- *
+ * 
+ * **Usage**
+ * 
  * ```ts
  * // typescript
  * import { Client, createClient } from '@f-py/node-client';
@@ -12,7 +13,7 @@
  *    const result = await client.login({ ... })
  * })()
  * ```
- * @module Node Client
+ * @packageDocumentation Node Client
  */
 
 import 'reflect-metadata';
@@ -23,6 +24,5 @@ export { IContextParams, Context, PlainObject } from './lib/utils';
 export * as models from './lib/models';
 export * as ws from './lib/websockets';
 export * from './lib/modules';
-export * from './lib/common/enums';
-export * from './lib/common/exceptions';
-export * from './lib/common/models';
+export * as enums from './lib/common/enums';
+export * as exceptions from './lib/common/exceptions';

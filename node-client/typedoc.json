@@ -1,4 +1,6 @@
 {
   "excludePrivate": true,
-  "excludeInternal": true
+  "excludeInternal": true,
+  "customCss": "./typedoc/theme.css",
+  "hideGenerator": true
 }

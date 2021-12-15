@@ -1,7 +1,7 @@
 import { IsOptional } from 'class-validator';
 
 import {
-  AlertTypeModel,
+  AlertTypeWrapper,
   EnumField,
   Nested,
   ResponseStatus,
@@ -40,9 +40,9 @@ export class GetEnabledAlertTypesResponseModel {
   /**
    * List of alert types
    */
-  @Nested(AlertTypeModel, { isArray: true })
+  @Nested(AlertTypeWrapper, { isArray: true })
   @IsOptional()
-  ai_ts?: AlertTypeModel[];
+  ai_ts?: AlertTypeWrapper[];
   /**
    * Error message if the request failed
    */

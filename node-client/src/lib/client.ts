@@ -33,7 +33,7 @@ import { WsClient } from './websockets/websocket.client';
  *    wsUrl: process.env.WS_URL
  * });
  * ```
- * @category client
+ * @category Client
  */
 @Service()
 export class Client {
