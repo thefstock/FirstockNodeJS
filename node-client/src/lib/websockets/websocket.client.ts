@@ -34,8 +34,9 @@ export type onMessageHandler = (
 /**
  * The websocket client for listening to events on the market.
  * The class exposes methods to subscribe and unsubscribe to different feeds (touchline, depth & order updates).
+ * 
  * It also exposes corresponding observables (touchline$, depth$ and order$) that emits update from each subscription.
- * @category Clients
+ * @category Client
  */
 @Service()
 export class WsClient {

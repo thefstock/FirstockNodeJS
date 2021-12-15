@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Open+Sans:wght@300;400;500&family=Poppins:ital,wght@0,300;0,400;1,500&display=swap');
+
+:root {
+  --color-primary: #06d6a0;
+  --light-color-link: var(--color-primary);
+  --dark-color-link: var(--color-primary);
+  --color-panel-divider: rgba(0,0,0,0.1) !important;
+  --light-color-text: #3b3b3b;
+  --dark-color-text: #e4e4e4;
+  --light-color-background: #eaeaea;
+  --light-code-background: #ececec;
+  --light-color-panel: #f3f3f3;
+  --light-table-color-1: #ececec;
+  --light-table-color-2: #eaeaea;
+  --dark-table-color-1: #1f1f1f;
+  --dark-table-color-2: #1a1a1a;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --table-color-1: var(--light-table-color-1);
+    --table-color-2: var(--light-table-color-2);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --table-color-1: var(--dark-table-color-1);
+    --table-color-2: var(--dark-table-color-2);
+  }
+}
+
+body {
+  font-family: 'DM Mono', Consolas, monospace;
+  font-size: 15px;
+}
+
+body.light {
+  --table-color-1: var(--light-table-color-1);
+  --table-color-2: var(--light-table-color-2);
+}
+body.dark {
+  --table-color-1: var(--dark-table-color-1);
+  --table-color-2: var(--dark-table-color-2);
+}
+
+.tsd-page-toolbar {
+  border-bottom: none;
+}
+
+.tsd-navigation.primary li {
+  border-top: none;
+}
+
+.tsd-navigation.primary > ul {
+  border-bottom: none;
+  background: rgba(0,0,0,0.05);
+  padding: 10px 0px;
+  border-radius: 4px;
+}
+
+.tsd-navigation.primary ul li > a {
+  padding: 6px 12px;
+  border-left: 4px solid transparent;
+  transition: background 0.3s ease-in-out;
+}
+
+.tsd-navigation.primary ul li > a:hover {
+  background: rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+
+.tsd-navigation ul li:not(:first-child) {
+  margin-top: 6px;
+}
+
+.tsd-navigation.primary li.current > a {
+  border-color: var(--color-primary);
+}
+
+.tsd-panel {
+  border-radius: 4px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.05);
+}
+
+.tsd-index-panel .tsd-index-section h3 {
+  border-bottom: none;
+  border-right: 4px solid var(--color-primary);
+  border-left: 4px solid var(--color-primary);
+  background: rgba(0,0,0,0.05);
+}
+
+.tsd-index-panel .tsd-index-section h3 {
+  padding: 12px 18px;
+}
+
+.tsd-index-panel .tsd-member h3 {
+  padding: 10px 18px;
+}
+
+.tsd-page-title {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+}
+
+.tsd-index-list li {
+  padding: 3px 6px;
+  font-size: 0.8rem;
+}
+
+.tsd-signature, .tsd-signatures {
+  border: none;
+  background: rgba(0,0,0,0.05);
+}
+
+.tsd-signature-type {
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+footer {
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+ul.tsd-parameters > li {
+  list-style-type: none;
+}
+ul.tsd-parameters > li::before {
+  content: '🠖';
+  position: absolute;
+  left: -2px;
+  color: var(--color-primary);
+  margin-right: 15px;
+}
+
+.tsd-parameters-title, .tsd-returns-title {
+  font-size: 0.95rem !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    CODE                                    */
+/* -------------------------------------------------------------------------- */
+
+pre {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding: 24px;
+  border-radius: 8px;
+  letter-spacing: 0.02rem;
+}
+
+pre [class^='language-'] {
+  position: relative;
+}
+pre [class^='language-']::after {
+  content: 'TS';
+  font-weight: bold;
+  display: block;
+  padding: 6px;
+  position: absolute;
+  letter-spacing: 2px;
+  left: -24px;
+  top: -24px;
+  opacity: 0.65;
+  font-size: 0.65rem;
+  color: var(--color-primary);
+}
+
+pre, code {
+  font-family: 'DM Mono', Consolas, monospace;
+}
+code { border-radius: 2px; }
+
+/* -------------------------------------------------------------------------- */
+/*                                 TYPOGRAPHY                                 */
+/* -------------------------------------------------------------------------- */
+
+.tsd-typography a > h2, .tsd-typography a > h3, .tsd-typography a > h4 {
+  position: relative;
+}
+.tsd-typography a > h2 { padding-left: 16px; }
+.tsd-typography a > h3 { padding-left: 26px; }
+.tsd-typography a > h4 { padding-left: 36px; }
+
+.tsd-typography a > h2::before, .tsd-typography a > h3::before, .tsd-typography a > h4::before {
+  font-size: 1rem;
+  color: var(--color-primary);
+  position: absolute;
+  left: 0;
+}
+.tsd-typography a > h2::before { content: '#'; }
+.tsd-typography a > h3::before { content: '##'; }
+.tsd-typography a > h4::before { content: '###'; }
+
+/* -------------------------------------------------------------------------- */
+/*                                    TABLE                                   */
+/* -------------------------------------------------------------------------- */
+
+
+.tsd-panel table thead, .tsd-panel table tbody {
+  width: 100%;
+  overflow: auto;
+}
+
+.tsd-panel table thead tr th {
+  text-align: left;
+}
+
+.tsd-panel table tr {
+  background: var(--table-color-1);
+}
+.tsd-panel table tr:nth-child(even) {
+  background: var(--table-color-2);
+}
+
+/* select#theme {
+  padding: 4px 8px;
+  font-family: 'Poppins';
+  border: none;
+  background: rgba(0,0,0,0.1);
+  border-radius: 4px;
+  color: var(--color-text);
+} */
